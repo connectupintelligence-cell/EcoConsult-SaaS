@@ -6,6 +6,7 @@ import { DashboardView } from './components/dashboard/DashboardView';
 import { CrmView } from './components/crm/CrmView';
 import { ProjectsView } from './components/projects/ProjectsView';
 import { LicensingView } from './components/licensing/LicensingView';
+import { OfficialNoticesView } from './components/licensing/OfficialNoticesView';
 import { DocumentsView } from './components/documents/DocumentsView';
 import { FinancialView } from './components/financial/FinancialView';
 import { TeamView } from './components/team/TeamView';
@@ -30,6 +31,7 @@ const MainLayout: React.FC = () => {
         <main className="flex-1 overflow-y-auto p-6">
           <div className="max-w-7xl mx-auto">
             {activeTab === 'dashboard' && <DashboardView onNavigate={(tab) => setActiveTab(tab)} />}
+            {activeTab === 'notices' && <OfficialNoticesView />}
             {activeTab === 'crm' && <CrmView />}
             {activeTab === 'projects' && <ProjectsView />}
             {activeTab === 'licensing' && <LicensingView />}

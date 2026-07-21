@@ -27,7 +27,7 @@ export interface Client {
   contactPerson: string;
   email: string;
   phone: string;
-  sector: 'Mineração' | 'Indústria' | 'Agronegócio' | 'Energia' | 'Construção Civil' | 'Logística';
+  sector: 'Mineração' | 'Indústria' | 'Agronegócio' | 'Energia' | 'Construção Civil' | 'Logística' | 'Alimentício';
   city: string;
   state: string;
 }
@@ -112,8 +112,8 @@ export interface LicensingProcess {
   tenantId: string;
   clientId: string;
   processNumber: string;
-  environmentalOrgan: 'IBAMA' | 'CETESB' | 'INEA' | 'IAT' | 'SEMAD' | 'FEPAM' | 'FAPAM';
-  licenseType: 'LP' | 'LI' | 'LO' | 'Outorga' | 'ASV' | 'AA';
+  environmentalOrgan: 'IBAMA' | 'CETESB' | 'INEA' | 'IAT' | 'SEMAD' | 'FEPAM' | 'FAPAM' | 'FEAM/URA Sul de Minas' | 'Secretaria de Meio Ambiente Poços de Caldas' | 'IGAM / URGA';
+  licenseType: 'LP' | 'LI' | 'LO' | 'Outorga' | 'ASV' | 'AA' | 'Ofício/Processo';
   issueDate: string;
   expirationDate: string;
   status: 'protocolado' | 'em_analise' | 'deferido' | 'pendencia' | 'vencido';
@@ -135,7 +135,7 @@ export interface DocumentItem {
   clientId: string;
   projectId?: string;
   title: string;
-  category: 'Licenças & Portarias' | 'Relatórios Técnicos' | 'Estudos de Campo' | 'Contratos' | 'Fiscal';
+  category: 'Licenças & Portarias' | 'Relatórios Técnicos' | 'Estudos de Campo' | 'Contratos' | 'Fiscal' | 'Ofícios Emitidos';
   currentVersion: number;
   versions: DocumentVersion[];
   isAiParsed: boolean;
@@ -161,8 +161,21 @@ export interface AuditLog {
   tenantId: string;
   userName: string;
   action: string;
-  module: 'CRM' | 'Projetos' | 'Licenciamento' | 'Documentos' | 'Financeiro' | 'IA Engine';
+  module: 'CRM' | 'Projetos' | 'Licenciamento' | 'Documentos' | 'Financeiro' | 'IA Engine' | 'Controle de Ofícios';
   timestamp: string;
   isAiAction: boolean;
   details: string;
+}
+
+export interface OfficialNotice {
+  id: string;
+  tenantId: string;
+  noticeNumber: string;
+  date: string;
+  organ: 'FEAM/URA Sul de Minas' | 'Secretaria de Meio Ambiente Poços de Caldas' | 'IGAM / URGA' | 'IBAMA';
+  subject: string;
+  signedBy: string;
+  protocolDate: string;
+  evidenceLocation: string;
+  seiProcessOrNotes: string;
 }

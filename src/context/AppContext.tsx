@@ -1,12 +1,12 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { 
   Tenant, User, Client, ProposalTemplate, Proposal, ProjectTemplate, Project, 
-  LicensingProcess, DocumentItem, Invoice, AuditLog, UserRole 
+  LicensingProcess, DocumentItem, Invoice, AuditLog, OfficialNotice, UserRole 
 } from '../types';
 import { 
   INITIAL_TENANTS, INITIAL_USERS, INITIAL_CLIENTS, INITIAL_PROPOSAL_TEMPLATES, 
   INITIAL_PROPOSALS, INITIAL_PROJECT_TEMPLATES, INITIAL_PROJECTS, INITIAL_LICENSES, 
-  INITIAL_DOCUMENTS, INITIAL_INVOICES, INITIAL_AUDIT_LOGS 
+  INITIAL_DOCUMENTS, INITIAL_INVOICES, INITIAL_AUDIT_LOGS, INITIAL_OFFICIAL_NOTICES 
 } from '../services/mockData';
 import { InvoicingAdapterService } from '../services/invoicingAdapter';
 
@@ -26,6 +26,7 @@ interface AppContextType {
   documents: DocumentItem[];
   invoices: Invoice[];
   auditLogs: AuditLog[];
+  officialNotices: OfficialNotice[];
 
   // Actions
   addAuditLog: (action: string, module: AuditLog['module'], isAi: boolean, details: string) => void;
@@ -38,6 +39,7 @@ interface AppContextType {
   updateConditionStatus: (processId: string, conditionId: string, status: 'cumprida' | 'em_andamento' | 'pendente' | 'vencida') => void;
   emitInvoiceViaAdapter: (invoiceId: string) => Promise<boolean>;
   addDocument: (doc: Omit<DocumentItem, 'id' | 'tenantId'>) => void;
+  addOfficialNotice: (notice: Omit<OfficialNotice, 'id' | 'tenantId'>) => void;
   
   // Filtered Critical Deadlines
   getCriticalDeadlinesCount: () => { danger: number; warning: number; info: number };
@@ -48,7 +50,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [tenants] = useState<Tenant[]>(INITIAL_TENANTS);
   const [currentTenant, setCurrentTenantState] = useState<Tenant>(INITIAL_TENANTS[0]);
-  const [users, setUsers] = useState<User[]>(INITIAL_USERS);
+  const [users] = useState<User[]>(INITIAL_USERS);
   const [currentUser, setCurrentUser] = useState<User>(INITIAL_USERS[0]);
 
   // Master State
@@ -61,6 +63,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [allDocuments, setAllDocuments] = useState<DocumentItem[]>(INITIAL_DOCUMENTS);
   const [allInvoices, setAllInvoices] = useState<Invoice[]>(INITIAL_INVOICES);
   const [allAuditLogs, setAllAuditLogs] = useState<AuditLog[]>(INITIAL_AUDIT_LOGS);
+  const [allOfficialNotices, setAllOfficialNotices] = useState<OfficialNotice[]>(INITIAL_OFFICIAL_NOTICES);
 
   // Sync user with current tenant
   const setCurrentTenant = (tenant: Tenant) => {
@@ -68,10 +71,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const tenantUser = users.find(u => u.tenantId === tenant.id) || {
       id: `user-${tenant.id}`,
       tenantId: tenant.id,
-      name: 'Gestor Responsável',
+      name: 'Engª. Thaynan Melo',
       email: `admin@${tenant.name.toLowerCase().replace(/[^a-z0-9]/g, '')}.com.br`,
       role: 'admin' as UserRole,
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80'
     };
     setCurrentUser(tenantUser);
   };
@@ -90,6 +93,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const documents = allDocuments.filter(d => d.tenantId === currentTenant.id);
   const invoices = allInvoices.filter(i => i.tenantId === currentTenant.id);
   const auditLogs = allAuditLogs.filter(a => a.tenantId === currentTenant.id);
+  const officialNotices = allOfficialNotices.filter(o => o.tenantId === currentTenant.id);
 
   const addAuditLog = (action: string, module: AuditLog['module'], isAi: boolean, details: string) => {
     const newLog: AuditLog = {
@@ -212,15 +216,24 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     addAuditLog(`Novo documento catalogado: ${newDoc.title}`, 'Documentos', newDoc.isAiParsed, `Categoria: ${newDoc.category}`);
   };
 
+  const addOfficialNotice = (noticeData: Omit<OfficialNotice, 'id' | 'tenantId'>) => {
+    const newNotice: OfficialNotice = {
+      ...noticeData,
+      id: `of-${Date.now()}`,
+      tenantId: currentTenant.id
+    };
+    setAllOfficialNotices(prev => [newNotice, ...prev]);
+    addAuditLog(`Ofício cadastrado: ${newNotice.noticeNumber}`, 'Controle de Ofícios', false, `Órgão: ${newNotice.organ}`);
+  };
+
   const getCriticalDeadlinesCount = () => {
-    let danger = 0; // <= 5 dias ou vencida
-    let warning = 0; // <= 15 dias
-    let info = 0; // <= 30 dias
+    let danger = 0;
+    let warning = 0;
+    let info = 0;
 
     const today = new Date().getTime();
 
     licenses.forEach(lic => {
-      // Checar vencimento da licença
       const expTime = new Date(lic.expirationDate).getTime();
       const diffDays = Math.ceil((expTime - today) / (1000 * 3600 * 24));
 
@@ -228,7 +241,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       else if (diffDays <= 15) warning++;
       else if (diffDays <= 30) info++;
 
-      // Checar condicionantes
       lic.conditions.forEach(cond => {
         if (cond.status !== 'cumprida') {
           const condTime = new Date(cond.deadlineDate).getTime();
@@ -258,6 +270,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       documents,
       invoices,
       auditLogs,
+      officialNotices,
       addAuditLog,
       addProposalTemplate,
       addProposal,
@@ -268,6 +281,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       updateConditionStatus,
       emitInvoiceViaAdapter,
       addDocument,
+      addOfficialNotice,
       getCriticalDeadlinesCount
     }}>
       {children}

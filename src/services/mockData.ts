@@ -1,4 +1,4 @@
-import { Tenant, User, Client, ProposalTemplate, Proposal, ProjectTemplate, Project, LicensingProcess, DocumentItem, Invoice, AuditLog } from '../types';
+import { Tenant, User, Client, ProposalTemplate, Proposal, ProjectTemplate, Project, LicensingProcess, DocumentItem, Invoice, AuditLog, OfficialNotice } from '../types';
 
 export const INITIAL_TENANTS: Tenant[] = [
   {
@@ -25,8 +25,8 @@ export const INITIAL_USERS: User[] = [
   {
     id: 'user-1',
     tenantId: 'tenant-1',
-    name: 'Dra. Camila Siqueira',
-    email: 'camila@verdeambiental.com.br',
+    name: 'Engª. Thaynan Melo',
+    email: 'thaynan.melo@verdeambiental.com.br',
     role: 'admin',
     avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80'
   },
@@ -58,6 +58,18 @@ export const INITIAL_USERS: User[] = [
 
 export const INITIAL_CLIENTS: Client[] = [
   {
+    id: 'cli-ferrero',
+    tenantId: 'tenant-1',
+    name: 'Ferrero do Brasil Indústria Doceira',
+    cnpj: '02.502.943/0001-80',
+    contactPerson: 'Gestão Ambiental Ferrero',
+    email: 'meioambiente@ferrero.com.br',
+    phone: '(35) 3729-1000',
+    sector: 'Alimentício',
+    city: 'Poços de Caldas',
+    state: 'MG'
+  },
+  {
     id: 'cli-1',
     tenantId: 'tenant-1',
     name: 'Mineração Serra Dourada S/A',
@@ -80,30 +92,261 @@ export const INITIAL_CLIENTS: Client[] = [
     sector: 'Indústria',
     city: 'Campinas',
     state: 'SP'
-  },
+  }
+];
+
+export const INITIAL_OFFICIAL_NOTICES: OfficialNotice[] = [
   {
-    id: 'cli-3',
+    id: 'of-1',
     tenantId: 'tenant-1',
-    name: 'Agropecuária Vale Verde',
-    cnpj: '66.777.888/0001-99',
-    contactPerson: 'Marcos Pozzi',
-    email: 'mpozzi@valeverde.com.br',
-    phone: '(16) 99123-8899',
-    sector: 'Agronegócio',
-    city: 'Ribeirão Preto',
-    state: 'SP'
+    noticeNumber: '79738866/2023',
+    date: '2023-12-29',
+    organ: 'FEAM/URA Sul de Minas',
+    subject: 'Atualização nas condições de operação e melhorias implementadas no sistema produtivo da empresa',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2023-12-29',
+    evidenceLocation: 'Sistema Eletrônico de Informações - Acesso Externo (Parcial)',
+    seiProcessOrNotes: 'PROC. SEI FEAM/URA 1370.01.0049245/2021-40'
   },
   {
-    id: 'cli-4',
-    tenantId: 'tenant-2',
-    name: 'Parque Eólico Ventos do Sul',
-    cnpj: '77.888.999/0001-11',
-    contactPerson: 'Carla Hoffmann',
-    email: 'carla@ventosdosul.com.br',
-    phone: '(41) 98877-6655',
-    sector: 'Energia',
-    city: 'Curitiba',
-    state: 'PR'
+    id: 'of-2',
+    tenantId: 'tenant-1',
+    noticeNumber: '81033758/2024',
+    date: '2024-01-19',
+    organ: 'FEAM/URA Sul de Minas',
+    subject: 'Relatório Técnico referente a ampliação da área da subestação de energia - área de 0,36ha ou 3.600m²',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2024-01-26',
+    evidenceLocation: 'Sistema Eletrônico de Informações - Acesso Externo (Integral)',
+    seiProcessOrNotes: 'PROC. SEI FEAM/URA 2090.01.0002616/2024-49'
+  },
+  {
+    id: 'of-3',
+    tenantId: 'tenant-1',
+    noticeNumber: '91838854/2024',
+    date: '2024-07-03',
+    organ: 'FEAM/URA Sul de Minas',
+    subject: 'Apresentação das informações complementares solicitadas pelo analista - polígonos das áreas',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2024-07-04',
+    evidenceLocation: 'Sistema Eletrônico de Informações - Acesso Externo (Integral)',
+    seiProcessOrNotes: 'Resposta ao Ofício FEAM/URA SM - CAT nº 94/2024 (SEI 2090.01.0002616/2024-49)'
+  },
+  {
+    id: 'of-4',
+    tenantId: 'tenant-1',
+    noticeNumber: '82565056/2024',
+    date: '2024-02-22',
+    organ: 'FEAM/URA Sul de Minas',
+    subject: 'Cumprimento de condicionante - Efluentes Líquidos ETE e montante e jusante do corpo receptor',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2024-02-22',
+    evidenceLocation: 'Sistema Eletrônico de Informações - Acesso Parcial',
+    seiProcessOrNotes: 'PROC. SEI FEAM/URA 1370.01.0049245/2021-41'
+  },
+  {
+    id: 'of-5',
+    tenantId: 'tenant-1',
+    noticeNumber: '2501_2024',
+    date: '2024-01-25',
+    organ: 'Secretaria de Meio Ambiente Poços de Caldas',
+    subject: 'Comunicado de ampliação da área útil referente à implantação da subestação de energia elétrica',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2025-01-25',
+    evidenceLocation: 'E-mail : licenciamentoma.semma@gmail.com',
+    seiProcessOrNotes: 'Emitida Certidão de Dispensa de Licenciamento Ambiental nº 005/2024'
+  },
+  {
+    id: 'of-6',
+    tenantId: 'tenant-1',
+    noticeNumber: '2024/04',
+    date: '2024-06-06',
+    organ: 'Secretaria de Meio Ambiente Poços de Caldas',
+    subject: 'Solicitação de renovação da Autorização para terraplanagem',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2025-10-25',
+    evidenceLocation: 'E-mail : licenciamentoma.semma@gmail.com',
+    seiProcessOrNotes: 'Autorização de Terraplanagem nº 005/2024'
+  },
+  {
+    id: 'of-7',
+    tenantId: 'tenant-1',
+    noticeNumber: '2024/05',
+    date: '2024-10-15',
+    organ: 'Secretaria de Meio Ambiente Poços de Caldas',
+    subject: 'Documentos da Responsável Técnico (Envio de ART e Certidões)',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2024-10-15',
+    evidenceLocation: 'E-mail : licenciamentoma.semma@gmail.com',
+    seiProcessOrNotes: 'Documentação do RT anexada'
+  },
+  {
+    id: 'of-8',
+    tenantId: 'tenant-1',
+    noticeNumber: '93953511/2025',
+    date: '2024-07-31',
+    organ: 'FEAM/URA Sul de Minas',
+    subject: 'Ofício Condicionante Nº 01 (1º semestre/2024)',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2024-07-31',
+    evidenceLocation: 'Sistema SEI MG - Acesso Parcial',
+    seiProcessOrNotes: 'PROC. SEI FEAM/URA 1370.01.0049245/2021-42'
+  },
+  {
+    id: 'of-9',
+    tenantId: 'tenant-1',
+    noticeNumber: '100361584/2024',
+    date: '2024-10-25',
+    organ: 'FEAM/URA Sul de Minas',
+    subject: 'Apresentação do Laudo Relatório Emissões Atmosféricas 2024',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2024-10-25',
+    evidenceLocation: 'Portal SEI-MG Consulta Externa (ID 13796971)',
+    seiProcessOrNotes: 'PROC. SEI FEAM/URA 1370.01.0049245/2021-43'
+  },
+  {
+    id: 'of-10',
+    tenantId: 'tenant-1',
+    noticeNumber: '106106007/2025',
+    date: '2025-01-24',
+    organ: 'FEAM/URA Sul de Minas',
+    subject: 'Cumprimento de Condicionante - Efluentes Líquidos/Montante e Jusante',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2025-01-24',
+    evidenceLocation: 'Sistema SEI MG - Acesso Parcial',
+    seiProcessOrNotes: 'PROC. SEI FEAM/URA 1370.01.0049245/2021-44'
+  },
+  {
+    id: 'of-11',
+    tenantId: 'tenant-1',
+    noticeNumber: '113835652/2025',
+    date: '2025-05-17',
+    organ: 'FEAM/URA Sul de Minas',
+    subject: 'Ofício Apresentação melhorias e juntada PGRS',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2025-05-17',
+    evidenceLocation: 'Sistema SEI MG - Acesso Parcial',
+    seiProcessOrNotes: 'PROC. SEI FEAM/URA 1370.01.0049245/2021-45'
+  },
+  {
+    id: 'of-12',
+    tenantId: 'tenant-1',
+    noticeNumber: '114071235/2025',
+    date: '2025-05-21',
+    organ: 'FEAM/URA Sul de Minas',
+    subject: 'Documento Plano Gerenc. Resíduos Sólidos Industrial (PGRSI)',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2025-05-21',
+    evidenceLocation: 'Sistema SEI MG - Acesso Parcial',
+    seiProcessOrNotes: 'PROC. SEI FEAM/URA 1370.01.0049245/2021-46'
+  },
+  {
+    id: 'of-13',
+    tenantId: 'tenant-1',
+    noticeNumber: '118939128/2025',
+    date: '2025-07-24',
+    organ: 'FEAM/URA Sul de Minas',
+    subject: 'Cumprimento de Condicionante - Efluentes Líquidos (Item 1 – Anexo II)',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2025-07-24',
+    evidenceLocation: 'Sistema SEI MG - Acesso Parcial',
+    seiProcessOrNotes: 'PROC. SEI FEAM/URA 1370.01.0049245/2021-47'
+  },
+  {
+    id: 'of-14',
+    tenantId: 'tenant-1',
+    noticeNumber: '124144074/2025',
+    date: '2025-10-01',
+    organ: 'IGAM / URGA',
+    subject: 'Cumprimento de condicionante - Portaria de outorga _ Poço 3',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2025-10-01',
+    evidenceLocation: 'Sistema SEI IGAM',
+    seiProcessOrNotes: 'PROC. SEI IGAM 2240.01.0005754/2025-41'
+  },
+  {
+    id: 'of-15',
+    tenantId: 'tenant-1',
+    noticeNumber: '125505510/2025',
+    date: '2025-10-20',
+    organ: 'FEAM/URA Sul de Minas',
+    subject: 'Ofício Justificativa de prorrogação de prazo efluente atmosférico',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2025-10-20',
+    evidenceLocation: 'Sistema SEI MG - Acesso Parcial',
+    seiProcessOrNotes: 'PROC. SEI FEAM/URA 1370.01.0049245/2021-48'
+  },
+  {
+    id: 'of-16',
+    tenantId: 'tenant-1',
+    noticeNumber: '1711_2025',
+    date: '2025-11-17',
+    organ: 'IBAMA',
+    subject: 'Apresentação de Requerimento de adesão ao pagamento da multa e cancelamento do processo',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2026-06-12',
+    evidenceLocation: 'SEI/IBAMA - 27015164 - Notificação',
+    seiProcessOrNotes: 'PROC. SEI IBAMA 02285.000442/2019-51'
+  },
+  {
+    id: 'of-17',
+    tenantId: 'tenant-1',
+    noticeNumber: '129740853/2025',
+    date: '2025-12-17',
+    organ: 'FEAM/URA Sul de Minas',
+    subject: 'Ofício protocolo cumprimento de condicionante efluente atmosférico',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2025-12-17',
+    evidenceLocation: 'Sistema SEI MG - Acesso Parcial',
+    seiProcessOrNotes: 'PROC. SEI FEAM/URA 1370.01.0049245/2021-48'
+  },
+  {
+    id: 'of-18',
+    tenantId: 'tenant-1',
+    noticeNumber: '131673378/2026',
+    date: '2026-01-22',
+    organ: 'FEAM/URA Sul de Minas',
+    subject: 'Cumprimento de Condicionantes - Efluentes líquidos montante e jusante do corpo hídrico',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2025-01-22',
+    evidenceLocation: 'Sistema SEI MG - Acesso Parcial',
+    seiProcessOrNotes: 'PROC. SEI FEAM/URA 1370.01.0049245/2021-49'
+  },
+  {
+    id: 'of-19',
+    tenantId: 'tenant-1',
+    noticeNumber: '136934989/2026',
+    date: '2026-04-06',
+    organ: 'FEAM/URA Sul de Minas',
+    subject: 'Documento PGRSS Serviço de Saúde',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2026-04-06',
+    evidenceLocation: 'Sistema SEI MG - Acesso Parcial',
+    seiProcessOrNotes: 'PROC. SEI FEAM/URA 1370.01.0049245/2021-50'
+  },
+  {
+    id: 'of-20',
+    tenantId: 'tenant-1',
+    noticeNumber: '140438602/2026',
+    date: '2026-05-22',
+    organ: 'FEAM/URA Sul de Minas',
+    subject: 'Solicitação de vistas no processo de Renovação da Licença Ambiental - RENLO',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2026-05-22',
+    evidenceLocation: 'Sistema SEI MG - Acompanhamento Integral',
+    seiProcessOrNotes: 'PROC. SEI FEAM/URA 2090.01.0004791/2026-03'
+  },
+  {
+    id: 'of-21',
+    tenantId: 'tenant-1',
+    noticeNumber: '143721449/2026',
+    date: '2026-07-05',
+    organ: 'FEAM/URA Sul de Minas',
+    subject: 'PGRSI_FERRERO_PERIODO 2026 - Plano de Gerenciamento de Resíduos Sólidos Industriais',
+    signedBy: 'Thaynan Melo',
+    protocolDate: '2026-07-05',
+    evidenceLocation: 'Sistema SEI MG - Acesso Parcial',
+    seiProcessOrNotes: 'PROC. SEI FEAM/URA 1370.01.0049245/2021-51'
   }
 ];
 
@@ -137,26 +380,6 @@ Estimado em **{{prazo}} dias úteis** a contar do envio completo da documentaç�
 
 *Validade desta proposta: 15 dias.*`,
     updatedAt: '2026-07-10'
-  },
-  {
-    id: 'pt-2',
-    tenantId: 'tenant-1',
-    title: 'Proposta Comercial - Plano de Gerenciamento de Resíduos Sólidos (PGRS)',
-    serviceType: 'Resíduos Sólidos',
-    placeholders: ['cliente', 'escopo', 'valor', 'prazo'],
-    contentMarkdown: `## PROPOSTA DE ELABORAÇÃO DE PGRS
-
-**Cliente:** {{cliente}}
-
-### Escopo Proposto
-1. Diagnóstico da geração de resíduos industriais/comerciais.
-2. Identificação de alternativas de triagem, reuso e destinação final ambientalmente adequada.
-3. {{escopo}}
-
-### Condições Comerciais
-- **Honorários Profissionais:** R$ {{valor}}
-- **Prazo de Entrega:** {{prazo}} dias.`,
-    updatedAt: '2026-07-12'
   }
 ];
 
@@ -164,43 +387,23 @@ export const INITIAL_PROPOSALS: Proposal[] = [
   {
     id: 'prop-101',
     tenantId: 'tenant-1',
-    clientId: 'cli-1',
+    clientId: 'cli-ferrero',
     templateId: 'pt-1',
-    title: 'LI Expansão Mina Dourada 2026',
+    title: 'PGRSI & Licenciamento Ferrero Poços de Caldas',
     version: 1,
     filledValues: {
-      cliente: 'Mineração Serra Dourada S/A',
-      escopo: 'Licenciamento de Instalação para nova cava de extração de quartzito e cava seca.',
-      valor: '85.000,00',
-      prazo: '60',
-      responsavel_tecnico: 'Dra. Camila Siqueira (CRBio 10450)'
+      cliente: 'Ferrero do Brasil Indústria Doceira',
+      escopo: 'Elaboração e protocolo do PGRSI 2026 e acompanhamento de condicionantes no SEI FEAM/URA.',
+      valor: '95.000,00',
+      prazo: '45',
+      responsavel_tecnico: 'Engª. Thaynan Melo'
     },
-    totalValue: 85000,
-    deliveryDays: 60,
-    status: 'enviado',
+    totalValue: 95000,
+    deliveryDays: 45,
+    status: 'aprovado',
     generatedByAI: true,
     humanApproved: true,
     createdAt: '2026-07-15'
-  },
-  {
-    id: 'prop-102',
-    tenantId: 'tenant-1',
-    clientId: 'cli-2',
-    templateId: 'pt-2',
-    title: 'Atualização PGRS Químicos Campinas',
-    version: 2,
-    filledValues: {
-      cliente: 'Indústria Química Paulista Ltda',
-      escopo: 'Revisão anual do PGRS para atendimento à exigência da CETESB.',
-      valor: '18.500,00',
-      prazo: '20'
-    },
-    totalValue: 18500,
-    deliveryDays: 20,
-    status: 'aprovado',
-    generatedByAI: false,
-    humanApproved: true,
-    createdAt: '2026-07-18'
   }
 ];
 
@@ -218,20 +421,6 @@ export const INITIAL_PROJECT_TEMPLATES: ProjectTemplate[] = [
     ],
     requiredDocs: ['Outorga Prévia de Água', 'Certidão de Uso do Solo Municipal', 'Matrícula do Imóvel', 'ART do Responsável Técnico'],
     aiPromptBase: 'Gerar relatórios de progresso focados no cumprimento de condicionantes da LI e mitigação de impactos vegetais.'
-  },
-  {
-    id: 'pj-tpl-2',
-    tenantId: 'tenant-1',
-    name: 'Modelo de Projeto - PGRS Industrial',
-    category: 'PGRS',
-    defaultChecklist: [
-      { id: 'st-5', title: 'Mapeamento de Pontos de Geração', estimatedDays: 7 },
-      { id: 'st-6', title: 'Classificação NBR 10.004', estimatedDays: 5 },
-      { id: 'st-7', title: 'Elaboração da Minuta do PGRS', estimatedDays: 10 },
-      { id: 'st-8', title: 'Apresentação e Treinamento da Equipe do Cliente', estimatedDays: 3 }
-    ],
-    requiredDocs: ['MTRs dos últimos 12 meses', 'Certificados de Destinação Final (CDF)', 'Alvará de Funcionamento'],
-    aiPromptBase: 'Gerar sumário de resíduos perigosos Classe I e recomendações de redução na fonte.'
   }
 ];
 
@@ -239,115 +428,52 @@ export const INITIAL_PROJECTS: Project[] = [
   {
     id: 'proj-1',
     tenantId: 'tenant-1',
-    clientId: 'cli-1',
+    clientId: 'cli-ferrero',
     templateId: 'pj-tpl-1',
-    name: 'Licenciamento de Instalação - Cava 04 Serra Dourada',
-    category: 'Licenciamento de Instalação',
+    name: 'Gestão de Ofícios & PGRSI Ferrero 2026',
+    category: 'PGRS',
     status: 'em_dia',
-    progress: 65,
-    responsibleUserId: 'user-2',
-    startDate: '2026-05-10',
+    progress: 85,
+    responsibleUserId: 'user-1',
+    startDate: '2026-01-15',
     deadlineDate: '2026-08-30',
     steps: [
-      { id: 's-1', title: 'Levantamento de Campo e Flora', completed: true, responsible: 'Eng. Lucas Mendes', dueDate: '2026-06-01' },
-      { id: 's-2', title: 'Elaboração do PCA/RCA', completed: true, responsible: 'Dra. Camila Siqueira', dueDate: '2026-06-25' },
-      { id: 's-3', title: 'Protocolo na SEMAD/MG', completed: true, responsible: 'Eng. Lucas Mendes', dueDate: '2026-07-05' },
-      { id: 's-4', title: 'Atendimento a Pendências Técnicas', completed: false, responsible: 'Eng. Lucas Mendes', dueDate: '2026-08-15' }
-    ]
-  },
-  {
-    id: 'proj-2',
-    tenantId: 'tenant-1',
-    clientId: 'cli-2',
-    templateId: 'pj-tpl-2',
-    name: 'PGRS Anual Indústria Química',
-    category: 'PGRS',
-    status: 'atrasado',
-    progress: 40,
-    responsibleUserId: 'user-2',
-    startDate: '2026-06-15',
-    deadlineDate: '2026-07-25',
-    steps: [
-      { id: 's-5', title: 'Auditoria de MTRs 2025/2026', completed: true, responsible: 'Eng. Lucas Mendes', dueDate: '2026-06-20' },
-      { id: 's-6', title: 'Consolidação de Dados de Destinação', completed: false, responsible: 'Eng. Lucas Mendes', dueDate: '2026-07-10' },
-      { id: 's-7', title: 'Submissão no SIGOR Resíduos (CETESB)', completed: false, responsible: 'Eng. Lucas Mendes', dueDate: '2026-07-25' }
+      { id: 's-1', title: 'Protocolo de Ofício PGRSI no SEI FEAM/URA', completed: true, responsible: 'Engª. Thaynan Melo', dueDate: '2026-07-05' },
+      { id: 's-2', title: 'Atendimento a Condicionantes de Efluentes Atmosféricos', completed: true, responsible: 'Engª. Thaynan Melo', dueDate: '2026-07-20' },
+      { id: 's-3', title: 'Acompanhamento de Vistas RENLO', completed: false, responsible: 'Engª. Thaynan Melo', dueDate: '2026-08-15' }
     ]
   }
 ];
 
 export const INITIAL_LICENSES: LicensingProcess[] = [
   {
-    id: 'lic-1',
+    id: 'lic-ferrero-1',
     tenantId: 'tenant-1',
-    clientId: 'cli-1',
-    processNumber: 'SEMAD-10495/2024',
-    environmentalOrgan: 'SEMAD',
-    licenseType: 'LI',
-    issueDate: '2024-08-15',
-    expirationDate: '2026-08-15', // Expirando em 25 dias!
+    clientId: 'cli-ferrero',
+    processNumber: 'FEAM/URA 1370.01.0049245/2021-51',
+    environmentalOrgan: 'FEAM/URA Sul de Minas',
+    licenseType: 'LO',
+    issueDate: '2024-01-10',
+    expirationDate: '2026-08-20', // Alert < 30 days
     status: 'em_analise',
     conditions: [
       {
-        id: 'cond-1',
-        processId: 'lic-1',
-        title: 'Relatório Trimestral de Monitoramento de Ruídos e Poeira Fugitiva',
-        description: 'Enviar laudo com ART assinado demonstrando pressão sonora abaixo de 60 dB(A).',
-        deadlineDate: '2026-07-30', // Faltam 9 dias! (Alerta Crítico < 15 dias)
-        alertDays: 15,
+        id: 'cond-f-1',
+        processId: 'lic-ferrero-1',
+        title: 'Cumprimento de Condicionante - Efluentes Líquidos (Montante e Jusante)',
+        description: 'Laudos laboratoriais periódicos do corpo receptor conforme Ofício SEI 131673378/2026.',
+        deadlineDate: '2026-08-10',
+        alertDays: 30,
         status: 'em_andamento'
       },
       {
-        id: 'cond-2',
-        processId: 'lic-1',
-        title: 'Programa de Reflorestamento de Mata Ciliar (5 ha)',
-        description: 'Comprovar plantio de 800 mudas nativas com relatório fotográfico.',
-        deadlineDate: '2026-08-10', // Faltam 20 dias (Alerta < 30 dias)
-        alertDays: 30,
+        id: 'cond-f-2',
+        processId: 'lic-ferrero-1',
+        title: 'Relatório de Emissões Atmosféricas 2026',
+        description: 'Apresentar laudos de amostragem de chaminés e caldeiras.',
+        deadlineDate: '2026-08-05',
+        alertDays: 15,
         status: 'pendente'
-      }
-    ]
-  },
-  {
-    id: 'lic-2',
-    tenantId: 'tenant-1',
-    clientId: 'cli-2',
-    processNumber: 'CETESB-99481/2025',
-    environmentalOrgan: 'CETESB',
-    licenseType: 'LO',
-    issueDate: '2023-08-01',
-    expirationDate: '2026-07-26', // Faltam 5 dias!! ALERTA MÁXIMO
-    status: 'pendencia',
-    conditions: [
-      {
-        id: 'cond-3',
-        processId: 'lic-2',
-        title: 'Apresentação do Laudo de Efluente Líquido Industrial',
-        description: 'Parâmetros DBO, DQO e Óleos e Graxas conforme Art. 18 do Regulamento.',
-        deadlineDate: '2026-07-24', // Faltam 3 dias! (URGENTE 5 dias)
-        alertDays: 5,
-        status: 'vencida'
-      }
-    ]
-  },
-  {
-    id: 'lic-3',
-    tenantId: 'tenant-1',
-    clientId: 'cli-3',
-    processNumber: 'IBAMA-02001.00394/2023',
-    environmentalOrgan: 'IBAMA',
-    licenseType: 'Outorga',
-    issueDate: '2025-01-10',
-    expirationDate: '2027-01-10',
-    status: 'deferido',
-    conditions: [
-      {
-        id: 'cond-4',
-        processId: 'lic-3',
-        title: 'Instalação de Horímetro e Hidrômetro Digital no Poço Tubular P-02',
-        description: 'Registrar vazão máxima captada em m³/h diários.',
-        deadlineDate: '2026-10-15',
-        alertDays: 30,
-        status: 'cumprida'
       }
     ]
   }
@@ -355,104 +481,45 @@ export const INITIAL_LICENSES: LicensingProcess[] = [
 
 export const INITIAL_DOCUMENTS: DocumentItem[] = [
   {
-    id: 'doc-1',
+    id: 'doc-ferrero-1',
     tenantId: 'tenant-1',
-    clientId: 'cli-1',
-    projectId: 'proj-1',
-    title: 'PCA_Plano_Controle_Ambiental_V3.pdf',
-    category: 'Relatórios Técnicos',
-    currentVersion: 3,
-    versions: [
-      { versionNumber: 1, fileName: 'PCA_Rascunho.pdf', uploadedAt: '2026-05-12', uploadedBy: 'Eng. Lucas Mendes', fileSize: '4.2 MB' },
-      { versionNumber: 2, fileName: 'PCA_Revisao_Camila.pdf', uploadedAt: '2026-06-01', uploadedBy: 'Dra. Camila Siqueira', fileSize: '5.1 MB' },
-      { versionNumber: 3, fileName: 'PCA_Final_Protocolado.pdf', uploadedAt: '2026-07-05', uploadedBy: 'Eng. Lucas Mendes', fileSize: '6.4 MB', note: 'Versão final protocolada na SEMAD/MG' }
-    ],
-    isAiParsed: true,
-    aiExtractedSummary: 'Extração IA: 4 condicionantes identificadas, 2 programas de monitoramento obrigatórios, prazo final de LI em 15/08/2026.'
-  },
-  {
-    id: 'doc-2',
-    tenantId: 'tenant-1',
-    clientId: 'cli-2',
-    title: 'Licenca_Operacao_CETESB_2023.pdf',
-    category: 'Licenças & Portarias',
+    clientId: 'cli-ferrero',
+    title: 'PGRSI_FERRERO_PERIODO_2026_SEI_143721449.pdf',
+    category: 'Ofícios Emitidos',
     currentVersion: 1,
     versions: [
-      { versionNumber: 1, fileName: 'Licenca_Operacao_CETESB_2023.pdf', uploadedAt: '2025-08-01', uploadedBy: 'Roberto Alencar', fileSize: '1.8 MB' }
+      { versionNumber: 1, fileName: 'PGRSI_FERRERO_PERIODO_2026_SEI_143721449.pdf', uploadedAt: '2026-07-05', uploadedBy: 'Engª. Thaynan Melo', fileSize: '8.5 MB', note: 'Protocolado no SEI FEAM/URA 1370.01.0049245/2021-51' }
     ],
     isAiParsed: true,
-    aiExtractedSummary: 'Extração IA: LO nº 99481/2025, Vencimento: 26/07/2026, Exigência de laudo de efluentes a cada 6 meses.'
+    aiExtractedSummary: 'Extração IA: Ofício nº 143721449/2026 referente ao PGRSI Ferrero. Protocolo confirmado em 05/07/2026 por Engª Thaynan Melo.'
   }
 ];
 
 export const INITIAL_INVOICES: Invoice[] = [
   {
-    id: 'inv-1',
+    id: 'inv-ferrero-1',
     tenantId: 'tenant-1',
-    clientId: 'cli-1',
-    contractTitle: 'Contrato de Assessoria Ambiental Continuada - Serra Dourada',
-    amount: 14500,
-    dueDate: '2026-07-28',
+    clientId: 'cli-ferrero',
+    contractTitle: 'Contrato de Assessoria Ambiental Continuada & Ofícios SEI - Ferrero',
+    amount: 38500,
+    dueDate: '2026-08-05',
     issueDate: '2026-07-01',
     status: 'emitida',
     provider: 'FocusNFe',
-    fiscalRef: 'NFS-e nº 0004928 - Cod. Verificação: A9F8-33',
-    xmlMockContent: '<?xml version="1.0" encoding="UTF-8"?><NFSe><Numero>4928</Numero><ValorServicos>14500.00</ValorServicos><Prestador>VerdeAmbiental Consultoria</Prestador><Tomador>Mineração Serra Dourada S/A</Tomador></NFSe>'
-  },
-  {
-    id: 'inv-2',
-    tenantId: 'tenant-1',
-    clientId: 'cli-2',
-    contractTitle: 'Parcela 2/2 - Atualização PGRS Industrial',
-    amount: 9250,
-    dueDate: '2026-07-31',
-    issueDate: '2026-07-15',
-    status: 'pendente',
-    provider: 'FocusNFe',
-    fiscalRef: 'Aguardando Aprovação de Emissão'
-  },
-  {
-    id: 'inv-3',
-    tenantId: 'tenant-1',
-    clientId: 'cli-3',
-    contractTitle: 'Estudo Hidrogeológico Poço Tubular',
-    amount: 22000,
-    dueDate: '2026-08-05',
-    issueDate: '2026-07-20',
-    status: 'pendente',
-    provider: 'FocusNFe'
+    fiscalRef: 'NFS-e nº 0005102 - Cod. Verificação: FEAM-MG-2026',
+    xmlMockContent: '<?xml version="1.0" encoding="UTF-8"?><NFSe><Numero>5102</Numero><ValorServicos>38500.00</ValorServicos><Prestador>VerdeAmbiental Consultoria</Prestador><Tomador>Ferrero do Brasil Indústria Doceira</Tomador></NFSe>'
   }
 ];
 
 export const INITIAL_AUDIT_LOGS: AuditLog[] = [
   {
-    id: 'log-1',
+    id: 'log-f1',
     tenantId: 'tenant-1',
-    userName: 'Dra. Camila Siqueira',
-    action: 'Emissão de Proposta Comercial v1',
-    module: 'CRM',
-    timestamp: '2026-07-15 14:32',
-    isAiAction: true,
-    details: 'Gerada proposta a partir do template "LI Expansão" com suporte de IA.'
-  },
-  {
-    id: 'log-2',
-    tenantId: 'tenant-1',
-    userName: 'Eng. Lucas Mendes',
-    action: 'Upload de Versão 3 do Documento PCA',
-    module: 'Documentos',
-    timestamp: '2026-07-05 09:15',
+    userName: 'Engª. Thaynan Melo',
+    action: 'Protocolo de Ofício nº 143721449/2026 na FEAM/URA',
+    module: 'Controle de Ofícios',
+    timestamp: '2026-07-05 16:20',
     isAiAction: false,
-    details: 'Versão 3 gravada no repositório de documentos.'
-  },
-  {
-    id: 'log-3',
-    tenantId: 'tenant-1',
-    userName: 'Roberto Alencar',
-    action: 'Emissão de NFS-e nº 0004928 via Adapter',
-    module: 'Financeiro',
-    timestamp: '2026-07-01 11:00',
-    isAiAction: false,
-    details: 'Integração FocusNFe executada com sucesso.'
+    details: 'PGRSI Ferrero registrado com sucesso no SEI FEAM/URA.'
   }
 ];
