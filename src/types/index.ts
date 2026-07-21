@@ -27,7 +27,7 @@ export interface Client {
   contactPerson: string;
   email: string;
   phone: string;
-  sector: 'Mineração' | 'Indústria' | 'Agronegócio' | 'Energia' | 'Construção Civil' | 'Logística' | 'Alimentício';
+  sector: 'Mineração' | 'Indústria' | 'Agronegócio' | 'Energia' | 'Construção Civil' | 'Logística' | 'Alimentício' | 'Farmoquímico';
   city: string;
   state: string;
 }
@@ -68,7 +68,7 @@ export interface ProjectTemplate {
   id: string;
   tenantId: string;
   name: string;
-  category: 'Licenciamento de Instalação' | 'PGRS' | 'Estudo de Impacto Ambiental (EIA/RIMA)' | 'Outorga de Uso de Água' | 'PRAD';
+  category: 'Licenciamento de Instalação' | 'PGRS' | 'Estudo de Impacto Ambiental (EIA/RIMA)' | 'Outorga de Uso de Água' | 'PRAD' | 'Polícia Federal / SPDA';
   defaultChecklist: ProjectTemplateStep[];
   requiredDocs: string[];
   aiPromptBase: string;
@@ -112,8 +112,8 @@ export interface LicensingProcess {
   tenantId: string;
   clientId: string;
   processNumber: string;
-  environmentalOrgan: 'IBAMA' | 'CETESB' | 'INEA' | 'IAT' | 'SEMAD' | 'FEPAM' | 'FAPAM' | 'FEAM/URA Sul de Minas' | 'Secretaria de Meio Ambiente Poços de Caldas' | 'IGAM / URGA';
-  licenseType: 'LP' | 'LI' | 'LO' | 'Outorga' | 'ASV' | 'AA' | 'Ofício/Processo';
+  environmentalOrgan: 'IBAMA' | 'CETESB' | 'INEA' | 'IAT' | 'SEMAD' | 'FEPAM' | 'FAPAM' | 'FEAM/URA Sul de Minas' | 'Secretaria de Meio Ambiente Poços de Caldas' | 'IGAM / URGA' | 'Polícia Federal';
+  licenseType: 'LP' | 'LI' | 'LO' | 'Outorga' | 'ASV' | 'AA' | 'Ofício/Processo' | 'CLF Polícia Federal' | 'Laudo SPDA';
   issueDate: string;
   expirationDate: string;
   status: 'protocolado' | 'em_analise' | 'deferido' | 'pendencia' | 'vencido';
@@ -135,7 +135,7 @@ export interface DocumentItem {
   clientId: string;
   projectId?: string;
   title: string;
-  category: 'Licenças & Portarias' | 'Relatórios Técnicos' | 'Estudos de Campo' | 'Contratos' | 'Fiscal' | 'Ofícios Emitidos';
+  category: 'Licenças & Portarias' | 'Relatórios Técnicos' | 'Estudos de Campo' | 'Contratos' | 'Fiscal' | 'Ofícios Emitidos' | 'Documentos da Empresa' | 'HALAL' | 'Licenças de Funcionamento' | 'Polícia Federal' | 'SPDA';
   currentVersion: number;
   versions: DocumentVersion[];
   isAiParsed: boolean;
@@ -161,7 +161,7 @@ export interface AuditLog {
   tenantId: string;
   userName: string;
   action: string;
-  module: 'CRM' | 'Projetos' | 'Licenciamento' | 'Documentos' | 'Financeiro' | 'IA Engine' | 'Controle de Ofícios';
+  module: 'CRM' | 'Projetos' | 'Licenciamento' | 'Documentos' | 'Financeiro' | 'IA Engine' | 'Controle de Ofícios' | 'Portais & Credenciais';
   timestamp: string;
   isAiAction: boolean;
   details: string;
@@ -178,4 +178,16 @@ export interface OfficialNotice {
   protocolDate: string;
   evidenceLocation: string;
   seiProcessOrNotes: string;
+}
+
+export interface PortalCredential {
+  id: string;
+  tenantId: string;
+  clientId: string;
+  systemName: 'IBAMA' | 'Sistema MTR' | 'Sistema SINIR' | 'Polícia Federal' | 'FEAM SEI';
+  loginCnpjOrUser: string;
+  cpfNameUser?: string;
+  emailContact?: string;
+  encryptedPassword?: string;
+  notes?: string;
 }

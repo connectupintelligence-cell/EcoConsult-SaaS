@@ -1,12 +1,12 @@
 import React, { createContext, useContext, useState } from 'react';
 import { 
   Tenant, User, Client, ProposalTemplate, Proposal, ProjectTemplate, Project, 
-  LicensingProcess, DocumentItem, Invoice, AuditLog, OfficialNotice, UserRole 
+  LicensingProcess, DocumentItem, Invoice, AuditLog, OfficialNotice, PortalCredential, UserRole 
 } from '../types';
 import { 
   INITIAL_TENANTS, INITIAL_USERS, INITIAL_CLIENTS, INITIAL_PROPOSAL_TEMPLATES, 
   INITIAL_PROPOSALS, INITIAL_PROJECT_TEMPLATES, INITIAL_PROJECTS, INITIAL_LICENSES, 
-  INITIAL_DOCUMENTS, INITIAL_INVOICES, INITIAL_AUDIT_LOGS, INITIAL_OFFICIAL_NOTICES 
+  INITIAL_DOCUMENTS, INITIAL_INVOICES, INITIAL_AUDIT_LOGS, INITIAL_OFFICIAL_NOTICES, INITIAL_PORTAL_CREDENTIALS 
 } from '../services/mockData';
 import { InvoicingAdapterService } from '../services/invoicingAdapter';
 
@@ -27,6 +27,7 @@ interface AppContextType {
   invoices: Invoice[];
   auditLogs: AuditLog[];
   officialNotices: OfficialNotice[];
+  portalCredentials: PortalCredential[];
 
   // Actions
   addAuditLog: (action: string, module: AuditLog['module'], isAi: boolean, details: string) => void;
@@ -40,6 +41,7 @@ interface AppContextType {
   emitInvoiceViaAdapter: (invoiceId: string) => Promise<boolean>;
   addDocument: (doc: Omit<DocumentItem, 'id' | 'tenantId'>) => void;
   addOfficialNotice: (notice: Omit<OfficialNotice, 'id' | 'tenantId'>) => void;
+  addPortalCredential: (credential: Omit<PortalCredential, 'id' | 'tenantId'>) => void;
   
   // Filtered Critical Deadlines
   getCriticalDeadlinesCount: () => { danger: number; warning: number; info: number };
@@ -64,6 +66,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [allInvoices, setAllInvoices] = useState<Invoice[]>(INITIAL_INVOICES);
   const [allAuditLogs, setAllAuditLogs] = useState<AuditLog[]>(INITIAL_AUDIT_LOGS);
   const [allOfficialNotices, setAllOfficialNotices] = useState<OfficialNotice[]>(INITIAL_OFFICIAL_NOTICES);
+  const [allPortalCredentials, setAllPortalCredentials] = useState<PortalCredential[]>(INITIAL_PORTAL_CREDENTIALS);
 
   // Sync user with current tenant
   const setCurrentTenant = (tenant: Tenant) => {
@@ -71,7 +74,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const tenantUser = users.find(u => u.tenantId === tenant.id) || {
       id: `user-${tenant.id}`,
       tenantId: tenant.id,
-      name: 'Engª. Thaynan Melo',
+      name: 'Cristiane Beatriz Pereira',
       email: `admin@${tenant.name.toLowerCase().replace(/[^a-z0-9]/g, '')}.com.br`,
       role: 'admin' as UserRole,
       avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80'
@@ -94,6 +97,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const invoices = allInvoices.filter(i => i.tenantId === currentTenant.id);
   const auditLogs = allAuditLogs.filter(a => a.tenantId === currentTenant.id);
   const officialNotices = allOfficialNotices.filter(o => o.tenantId === currentTenant.id);
+  const portalCredentials = allPortalCredentials.filter(c => c.tenantId === currentTenant.id);
 
   const addAuditLog = (action: string, module: AuditLog['module'], isAi: boolean, details: string) => {
     const newLog: AuditLog = {
@@ -226,6 +230,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     addAuditLog(`Ofício cadastrado: ${newNotice.noticeNumber}`, 'Controle de Ofícios', false, `Órgão: ${newNotice.organ}`);
   };
 
+  const addPortalCredential = (credData: Omit<PortalCredential, 'id' | 'tenantId'>) => {
+    const newCred: PortalCredential = {
+      ...credData,
+      id: `cred-${Date.now()}`,
+      tenantId: currentTenant.id
+    };
+    setAllPortalCredentials(prev => [...prev, newCred]);
+    addAuditLog(`Nova credencial cadastrada para ${newCred.systemName}`, 'Portais & Credenciais', false, `Login/CNPJ: ${newCred.loginCnpjOrUser}`);
+  };
+
   const getCriticalDeadlinesCount = () => {
     let danger = 0;
     let warning = 0;
@@ -271,6 +285,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       invoices,
       auditLogs,
       officialNotices,
+      portalCredentials,
       addAuditLog,
       addProposalTemplate,
       addProposal,
@@ -282,6 +297,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       emitInvoiceViaAdapter,
       addDocument,
       addOfficialNotice,
+      addPortalCredential,
       getCriticalDeadlinesCount
     }}>
       {children}

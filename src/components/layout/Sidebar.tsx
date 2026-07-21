@@ -1,9 +1,9 @@
 import React from 'react';
 import { 
-  LayoutDashboard, FileText, FolderKanban, Award, Files, DollarSign, Users, ShieldCheck, Leaf, FileCheck2 
+  LayoutDashboard, FileText, FolderKanban, Award, Files, DollarSign, Users, ShieldCheck, Leaf, FileCheck2, KeyRound 
 } from 'lucide-react';
 
-export type TabType = 'dashboard' | 'crm' | 'projects' | 'licensing' | 'notices' | 'documents' | 'financial' | 'team' | 'audit';
+export type TabType = 'dashboard' | 'crm' | 'projects' | 'licensing' | 'notices' | 'credentials' | 'documents' | 'financial' | 'team' | 'audit';
 
 interface SidebarProps {
   activeTab: TabType;
@@ -14,6 +14,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => 
   const menuItems: { id: TabType; label: string; icon: React.ReactNode; badge?: string }[] = [
     { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-4 h-4" /> },
     { id: 'notices', label: 'Controle de Ofícios', icon: <FileCheck2 className="w-4 h-4" />, badge: 'Planilha' },
+    { id: 'credentials', label: 'Portais & Credenciais', icon: <KeyRound className="w-4 h-4" />, badge: 'Senhas' },
     { id: 'licensing', label: 'Licenciamento Ambiental', icon: <Award className="w-4 h-4" />, badge: 'Prazos 30d' },
     { id: 'crm', label: 'CRM & Propostas', icon: <FileText className="w-4 h-4" />, badge: 'Templates' },
     { id: 'projects', label: 'Projetos & Moldes', icon: <FolderKanban className="w-4 h-4" />, badge: 'IA Prompt' },

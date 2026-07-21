@@ -1,4 +1,4 @@
-import { Tenant, User, Client, ProposalTemplate, Proposal, ProjectTemplate, Project, LicensingProcess, DocumentItem, Invoice, AuditLog, OfficialNotice } from '../types';
+import { Tenant, User, Client, ProposalTemplate, Proposal, ProjectTemplate, Project, LicensingProcess, DocumentItem, Invoice, AuditLog, OfficialNotice, PortalCredential } from '../types';
 
 export const INITIAL_TENANTS: Tenant[] = [
   {
@@ -25,6 +25,18 @@ export const INITIAL_USERS: User[] = [
 
 export const INITIAL_CLIENTS: Client[] = [
   {
+    id: 'cli-acg',
+    tenantId: 'tenant-cbp',
+    name: 'ACG do Brasil S.A.',
+    cnpj: '09.625.967/0002-14',
+    contactPerson: 'Bárbara Fernanda Pereira Oliveira (EHS)',
+    email: 'ehs.brasil@acg-world.com',
+    phone: '(35) 3729-2000',
+    sector: 'Farmoquímico',
+    city: 'Pouso Alegre',
+    state: 'MG'
+  },
+  {
     id: 'cli-ferrero',
     tenantId: 'tenant-cbp',
     name: 'Ferrero do Brasil Indústria Doceira',
@@ -35,6 +47,138 @@ export const INITIAL_CLIENTS: Client[] = [
     sector: 'Alimentício',
     city: 'Poços de Caldas',
     state: 'MG'
+  }
+];
+
+export const INITIAL_PORTAL_CREDENTIALS: PortalCredential[] = [
+  {
+    id: 'cred-1',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-acg',
+    systemName: 'IBAMA',
+    loginCnpjOrUser: '09.625.967/0002-14',
+    encryptedPassword: '•••••••• (mgca2014)',
+    notes: 'Cadastro Técnico Federal (CTF) - Licença Geral IBAMA'
+  },
+  {
+    id: 'cred-2',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-acg',
+    systemName: 'Sistema MTR',
+    loginCnpjOrUser: '09625967000214',
+    cpfNameUser: 'CPF: 05475230684 - Maurício Djalles Costa',
+    encryptedPassword: '•••••••• (e22964)',
+    notes: 'Manifesto de Transporte de Resíduos - Operador MTR 01'
+  },
+  {
+    id: 'cred-3',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-acg',
+    systemName: 'Sistema MTR',
+    loginCnpjOrUser: '09625967000214',
+    cpfNameUser: 'CPF: 10228808880 - Miguel Augusto Rocha',
+    emailContact: 'maugustorocha@hotmail.com',
+    encryptedPassword: '•••••••• (acg2020)',
+    notes: 'Manifesto de Transporte de Resíduos - Operador MTR 02'
+  },
+  {
+    id: 'cred-4',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-acg',
+    systemName: 'Sistema MTR',
+    loginCnpjOrUser: '09625967000214',
+    cpfNameUser: 'CPF: 143.588.216.42 - Bárbara Fernanda Pereira Oliveira',
+    emailContact: 'ehs.brasil@acg-world.com',
+    encryptedPassword: '•••••••• (acg2020b)',
+    notes: 'Gestão EHS Brasil - Responsável Autorizada MTR'
+  },
+  {
+    id: 'cred-5',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-acg',
+    systemName: 'Sistema MTR',
+    loginCnpjOrUser: '09625967000214',
+    cpfNameUser: 'CPF: 022.987.346-40 - Raphael Gonçalves Albinati',
+    emailContact: 'raphael.albinati@acg-world.com',
+    encryptedPassword: '•••••••• (acg2022)',
+    notes: 'Manifesto de Transporte de Resíduos - Gestor EHS'
+  },
+  {
+    id: 'cred-6',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-acg',
+    systemName: 'Sistema SINIR',
+    loginCnpjOrUser: '09625967000214',
+    cpfNameUser: 'CPF: 05475230684 - Maurício Djalles Costa',
+    encryptedPassword: '•••••••• (4qik3j)',
+    notes: 'Sistema Nacional de Informações sobre a Gestão dos Resíduos Sólidos'
+  }
+];
+
+export const INITIAL_DOCUMENTS: DocumentItem[] = [
+  {
+    id: 'doc-acg-1',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-acg',
+    title: '13_Licenca_Funcionamento_Operacao_ACG.pdf',
+    category: 'Licenças de Funcionamento',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: '13_Licenca_Funcionamento_Operacao_ACG.pdf', uploadedAt: '2025-05-30', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '4.8 MB', note: 'Licença de Operação e Alvará Municipal de Funcionamento' }
+    ],
+    isAiParsed: true,
+    aiExtractedSummary: 'Extração IA: Licença de Funcionamento válida para unidade Farmoquímica ACG do Brasil. Próxima renovação em 30/05/2026.'
+  },
+  {
+    id: 'doc-acg-2',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-acg',
+    title: '14_Certificado_Policia_Federal_CLF_2025.pdf',
+    category: 'Polícia Federal',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: '14_Certificado_Policia_Federal_CLF_2025.pdf', uploadedAt: '2025-05-30', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '2.4 MB', note: 'CLF DPF - Produtos Químicos Controlados' }
+    ],
+    isAiParsed: true,
+    aiExtractedSummary: 'Extração IA: Certificado de Licença de Funcionamento DPF nº 2025/PF-MG. Autorização para manuseio de solventes controlados.'
+  },
+  {
+    id: 'doc-acg-3',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-acg',
+    title: '15_Laudo_Tecnico_SPDA_Para_Raios_2025.pdf',
+    category: 'SPDA',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: '15_Laudo_Tecnico_SPDA_Para_Raios_2025.pdf', uploadedAt: '2025-05-30', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '6.1 MB', note: 'Laudo de inspeção do Sistema de Proteção contra Descargas Atmosféricas com ART' }
+    ],
+    isAiParsed: true,
+    aiExtractedSummary: 'Extração IA: Laudo SPDA conforme NBR 5419. Malha de aterramento e para-raios aprovados com ART assinado.'
+  },
+  {
+    id: 'doc-acg-4',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-acg',
+    title: '12_Certificado_HALAL_Exportacao_2025.pdf',
+    category: 'HALAL',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: '12_Certificado_HALAL_Exportacao_2025.pdf', uploadedAt: '2025-05-30', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '3.2 MB', note: 'Certificação internacional de conformidade HALAL' }
+    ],
+    isAiParsed: true,
+    aiExtractedSummary: 'Extração IA: Certificado HALAL para a linha de produção de cápsulas de gelatina dura ACG do Brasil.'
+  },
+  {
+    id: 'doc-acg-5',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-acg',
+    title: '11_Documentos_Empresa_CNPJ_Estatuto.pdf',
+    category: 'Documentos da Empresa',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: '11_Documentos_Empresa_CNPJ_Estatuto.pdf', uploadedAt: '2025-05-30', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '5.5 MB', note: 'Cartão CNPJ 09.625.967/0002-14 e Contrato Social' }
+    ],
+    isAiParsed: false
   }
 ];
 
@@ -330,23 +474,23 @@ export const INITIAL_PROPOSALS: Proposal[] = [
   {
     id: 'prop-101',
     tenantId: 'tenant-cbp',
-    clientId: 'cli-ferrero',
+    clientId: 'cli-acg',
     templateId: 'pt-1',
-    title: 'PGRSI & Licenciamento Ferrero Poços de Caldas 2026',
+    title: 'Licenciamento & Gestão EHS ACG do Brasil 2026',
     version: 1,
     filledValues: {
-      cliente: 'Ferrero do Brasil Indústria Doceira',
-      escopo: 'Elaboração e protocolo do PGRSI 2026 e acompanhamento de condicionantes no SEI FEAM/URA.',
-      valor: '95.000,00',
-      prazo: '45',
+      cliente: 'ACG do Brasil S.A.',
+      escopo: 'Gestão de licenças de funcionamento, certificado Polícia Federal, laudo SPDA e portais MTR/SINIR/IBAMA.',
+      valor: '120.000,00',
+      prazo: '60',
       responsavel_tecnico: 'Cristiane Beatriz Pereira'
     },
-    totalValue: 95000,
-    deliveryDays: 45,
+    totalValue: 120000,
+    deliveryDays: 60,
     status: 'aprovado',
     generatedByAI: true,
     humanApproved: true,
-    createdAt: '2026-07-20'
+    createdAt: '2026-07-21'
   }
 ];
 
@@ -354,115 +498,90 @@ export const INITIAL_PROJECT_TEMPLATES: ProjectTemplate[] = [
   {
     id: 'pj-tpl-1',
     tenantId: 'tenant-cbp',
-    name: 'Modelo de Projeto - Licenciamento de Instalação (LI)',
-    category: 'Licenciamento de Instalação',
+    name: 'Modelo de Projeto - Licenciamento & Produtos Controlados',
+    category: 'Polícia Federal / SPDA',
     defaultChecklist: [
-      { id: 'st-1', title: 'Levantamento de Campo e Caracterização Ambiental', estimatedDays: 15 },
-      { id: 'st-2', title: 'Elaboração de Planta Baixa e PCA/RCA', estimatedDays: 20 },
-      { id: 'st-3', title: 'Montagem de Dossiê e Protocolo no Órgão', estimatedDays: 5 },
-      { id: 'st-4', title: 'Acompanhamento do Deferimento e Condicionantes', estimatedDays: 30 }
+      { id: 'st-1', title: 'Auditoria de Estoque de Químicos Controlados', estimatedDays: 7 },
+      { id: 'st-2', title: 'Renovação do CLF Polícia Federal', estimatedDays: 15 },
+      { id: 'st-3', title: 'Inspeção e Medição da Malha SPDA (NBR 5419)', estimatedDays: 10 },
+      { id: 'st-4', title: 'Emissão da ART e Relatório Final', estimatedDays: 5 }
     ],
-    requiredDocs: ['Outorga Prévia de Água', 'Certidão de Uso do Solo Municipal', 'Matrícula do Imóvel', 'ART do Responsável Técnico'],
-    aiPromptBase: 'Gerar relatórios de progresso focados no cumprimento de condicionantes da LI e mitigação de impactos vegetais.'
+    requiredDocs: ['Certificado CLF DPF', 'Laudo Técnico SPDA', 'Certificado HALAL', 'Alvará de Funcionamento'],
+    aiPromptBase: 'Gerar relatórios de conformidade para auditoria ambiental e produtos controlados da Polícia Federal.'
   }
 ];
 
 export const INITIAL_PROJECTS: Project[] = [
   {
-    id: 'proj-1',
+    id: 'proj-acg-1',
     tenantId: 'tenant-cbp',
-    clientId: 'cli-ferrero',
+    clientId: 'cli-acg',
     templateId: 'pj-tpl-1',
-    name: 'Gestão de Ofícios & PGRSI Ferrero 2026',
-    category: 'PGRS',
+    name: 'Gestão de Licenças & Polícia Federal - ACG do Brasil',
+    category: 'Polícia Federal / SPDA',
     status: 'em_dia',
-    progress: 85,
+    progress: 90,
     responsibleUserId: 'user-cbp',
-    startDate: '2026-01-15',
-    deadlineDate: '2026-08-30',
+    startDate: '2026-01-10',
+    deadlineDate: '2026-09-15',
     steps: [
-      { id: 's-1', title: 'Protocolo de Ofício PGRSI no SEI FEAM/URA', completed: true, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-07-05' },
-      { id: 's-2', title: 'Atendimento a Condicionantes de Efluentes Atmosféricos', completed: true, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-07-20' },
-      { id: 's-3', title: 'Acompanhamento de Vistas RENLO', completed: false, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-08-15' }
+      { id: 's-1', title: 'Renovação de CLF Polícia Federal 2025/2026', completed: true, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-05-30' },
+      { id: 's-2', title: 'Laudo de Vistoria SPDA NBR 5419', completed: true, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-06-15' },
+      { id: 's-3', title: 'Auditoria Mensal MTR / SINIR Resíduos', completed: false, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-08-30' }
     ]
   }
 ];
 
 export const INITIAL_LICENSES: LicensingProcess[] = [
   {
-    id: 'lic-ferrero-1',
+    id: 'lic-acg-pf',
     tenantId: 'tenant-cbp',
-    clientId: 'cli-ferrero',
-    processNumber: 'FEAM/URA 1370.01.0049245/2021-51',
-    environmentalOrgan: 'FEAM/URA Sul de Minas',
-    licenseType: 'LO',
-    issueDate: '2024-01-10',
-    expirationDate: '2026-08-20',
+    clientId: 'cli-acg',
+    processNumber: 'CLF DPF 2025-00921/MG',
+    environmentalOrgan: 'Polícia Federal',
+    licenseType: 'CLF Polícia Federal',
+    issueDate: '2025-05-30',
+    expirationDate: '2026-08-25', // Alert < 30 days
     status: 'em_analise',
     conditions: [
       {
-        id: 'cond-f-1',
-        processId: 'lic-ferrero-1',
-        title: 'Cumprimento de Condicionante - Efluentes Líquidos (Montante e Jusante)',
-        description: 'Laudos laboratoriais periódicos do corpo receptor conforme Ofício SEI 131673378/2026.',
-        deadlineDate: '2026-08-10',
+        id: 'cond-acg-1',
+        processId: 'lic-acg-pf',
+        title: 'Envio de Relatório Trimestral de Insumos Controlados DPF',
+        description: 'Balanço mensal de entradas e saídas de solventes químicos controlados.',
+        deadlineDate: '2026-08-15',
         alertDays: 30,
         status: 'em_andamento'
-      },
-      {
-        id: 'cond-f-2',
-        processId: 'lic-ferrero-1',
-        title: 'Relatório de Emissões Atmosféricas 2026',
-        description: 'Apresentar laudos de amostragem de chaminés e caldeiras.',
-        deadlineDate: '2026-08-05',
-        alertDays: 15,
-        status: 'pendente'
       }
     ]
   }
 ];
 
-export const INITIAL_DOCUMENTS: DocumentItem[] = [
-  {
-    id: 'doc-ferrero-1',
-    tenantId: 'tenant-cbp',
-    clientId: 'cli-ferrero',
-    title: 'PGRSI_FERRERO_PERIODO_2026_SEI_143721449.pdf',
-    category: 'Ofícios Emitidos',
-    currentVersion: 1,
-    versions: [
-      { versionNumber: 1, fileName: 'PGRSI_FERRERO_PERIODO_2026_SEI_143721449.pdf', uploadedAt: '2026-07-05', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '8.5 MB', note: 'Protocolado no SEI FEAM/URA 1370.01.0049245/2021-51' }
-    ],
-    isAiParsed: true,
-    aiExtractedSummary: 'Extração IA: Ofício nº 143721449/2026 referente ao PGRSI Ferrero. Protocolo confirmado em 05/07/2026 por Cristiane Beatriz Pereira.'
-  }
-];
-
 export const INITIAL_INVOICES: Invoice[] = [
   {
-    id: 'inv-ferrero-1',
+    id: 'inv-acg-1',
     tenantId: 'tenant-cbp',
-    clientId: 'cli-ferrero',
-    contractTitle: 'Contrato de Assessoria Ambiental Continuada & Ofícios SEI - Ferrero',
-    amount: 38500,
-    dueDate: '2026-08-05',
+    clientId: 'cli-acg',
+    contractTitle: 'Contrato de Consultoria EHS & Licenciamento PF/SPDA - ACG do Brasil',
+    amount: 42000,
+    dueDate: '2026-08-10',
     issueDate: '2026-07-01',
     status: 'emitida',
     provider: 'FocusNFe',
-    fiscalRef: 'NFS-e nº 0005102 - Cod. Verificação: FEAM-MG-2026',
-    xmlMockContent: '<?xml version="1.0" encoding="UTF-8"?><NFSe><Numero>5102</Numero><ValorServicos>38500.00</ValorServicos><Prestador>Cristiane Beatriz Pereira - Consultoria Ambiental</Prestador><Tomador>Ferrero do Brasil Indústria Doceira</Tomador></NFSe>'
+    fiscalRef: 'NFS-e nº 0005108 - Cod. Verificação: ACG-EHS-2026',
+    xmlMockContent: '<?xml version="1.0" encoding="UTF-8"?><NFSe><Numero>5108</Numero><ValorServicos>42000.00</ValorServicos><Prestador>Cristiane Beatriz Pereira - Consultoria Ambiental</Prestador><Tomador>ACG do Brasil S.A.</Tomador></NFSe>'
   }
 ];
 
 export const INITIAL_AUDIT_LOGS: AuditLog[] = [
   {
-    id: 'log-f1',
+    id: 'log-acg-1',
     tenantId: 'tenant-cbp',
     userName: 'Cristiane Beatriz Pereira',
-    action: 'Protocolo de Ofício nº 143721449/2026 na FEAM/URA',
-    module: 'Controle de Ofícios',
-    timestamp: '2026-07-05 16:20',
+    action: 'Atualização de Acessos aos Portais MTR/SINIR da ACG do Brasil',
+    module: 'Portais & Credenciais',
+    timestamp: '2026-07-21 09:15',
     isAiAction: false,
-    details: 'PGRSI Ferrero registrado com sucesso no SEI FEAM/URA.'
+    details: 'Credenciais de Bárbara Oliveira e Raphael Albinati validadas.'
   }
 ];
