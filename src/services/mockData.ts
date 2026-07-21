@@ -47,6 +47,18 @@ export const INITIAL_CLIENTS: Client[] = [
     sector: 'Alimentício',
     city: 'Poços de Caldas',
     state: 'MG'
+  },
+  {
+    id: 'cli-loteamento-pa',
+    tenantId: 'tenant-cbp',
+    name: 'Loteamento Parque Pouso Alegre',
+    cnpj: '18.402.912/0001-55',
+    contactPerson: 'Engenharia & Urbanismo NEO',
+    email: 'contato@loteamentopousoalegre.com.br',
+    phone: '(35) 3421-9500',
+    sector: 'Construção Civil',
+    city: 'Pouso Alegre',
+    state: 'MG'
   }
 ];
 
@@ -164,6 +176,58 @@ export const INITIAL_PORTAL_CREDENTIALS: PortalCredential[] = [
 ];
 
 export const INITIAL_DOCUMENTS: DocumentItem[] = [
+  // LOTEAMENTO PARQUE POUSO ALEGRE DOCUMENTS
+  {
+    id: 'doc-pa-1',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-loteamento-pa',
+    title: 'Relatorio_Tecnico_Ambiental_Descaracterizacao_ZPA.pdf',
+    category: 'Estudos de Campo',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: 'Relatorio_Tecnico_Ambiental_Descaracterizacao_ZPA.pdf', uploadedAt: '2018-04-06', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '1.3 MB', note: 'Relatório de descaracterização de Zona de Proteção Ambiental' }
+    ],
+    isAiParsed: true,
+    aiExtractedSummary: 'Extração IA: Estudo técnico ambiental justificando a descaracterização de ZPA para aprovação do parcelamento urbano em Pouso Alegre.'
+  },
+  {
+    id: 'doc-pa-2',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-loteamento-pa',
+    title: 'Diretrizes_Tecnicas_Basicas_DTB_COPASA_MG.pdf',
+    category: 'Licenças & Portarias',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: 'Diretrizes_Tecnicas_Basicas_DTB_COPASA_MG.pdf', uploadedAt: '2017-11-06', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '2.0 MB', note: 'Diretrizes aprovadas pela COPASA MG para rede de água e esgoto' }
+    ],
+    isAiParsed: true,
+    aiExtractedSummary: 'Extração IA: DTB COPASA MG concedendo viabilidade técnica de abastecimento de água e coleta de esgoto para o Loteamento Parque Pouso Alegre.'
+  },
+  {
+    id: 'doc-pa-3',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-loteamento-pa',
+    title: 'Tabela_Orcamento_NEO_Consultoria.xlsx',
+    category: 'Contratos',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: 'Tabela_Orcamento_NEO_Consultoria.xlsx', uploadedAt: '2017-11-06', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '13 KB', note: 'Planilha de custos e estudos de engenharia ambiental NEO' }
+    ],
+    isAiParsed: false
+  },
+  {
+    id: 'doc-pa-4',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-loteamento-pa',
+    title: 'Dossie_Engenharia_Loteamento_Parque_Pouso_Alegre.rar',
+    category: 'Relatórios Técnicos',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: 'Dossie_Engenharia_Loteamento_Parque_Pouso_Alegre.rar', uploadedAt: '2017-11-06', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '12.7 MB', note: 'Projetos urbanísticos, topografia e memoriais descritivos' }
+    ],
+    isAiParsed: false
+  },
+
   // FERRERO DOCUMENTS
   {
     id: 'doc-ferrero-1',
@@ -592,6 +656,27 @@ export const INITIAL_PROPOSALS: Proposal[] = [
     generatedByAI: true,
     humanApproved: true,
     createdAt: '2026-07-21'
+  },
+  {
+    id: 'prop-102',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-loteamento-pa',
+    templateId: 'pt-1',
+    title: 'Descaracterização de ZPA & Diretrizes COPASA MG - Parque Pouso Alegre',
+    version: 1,
+    filledValues: {
+      cliente: 'Loteamento Parque Pouso Alegre',
+      escopo: 'Elaboração do Relatório Técnico de Descaracterização de ZPA e aprovação das Diretrizes Básicas COPASA MG.',
+      valor: '88.000,00',
+      prazo: '90',
+      responsavel_tecnico: 'Cristiane Beatriz Pereira'
+    },
+    totalValue: 88000,
+    deliveryDays: 90,
+    status: 'aprovado',
+    generatedByAI: true,
+    humanApproved: true,
+    createdAt: '2026-07-21'
   }
 ];
 
@@ -629,6 +714,23 @@ export const INITIAL_PROJECTS: Project[] = [
       { id: 's-1', title: 'Renovação de CLF Polícia Federal 2025/2026', completed: true, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-05-30' },
       { id: 's-2', title: 'Laudo de Vistoria SPDA NBR 5419', completed: true, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-06-15' },
       { id: 's-3', title: 'Auditoria Mensal MTR / SINIR Resíduos', completed: false, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-08-30' }
+    ]
+  },
+  {
+    id: 'proj-pa-1',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-loteamento-pa',
+    name: 'Parcelamento do Solo & Descaracterização ZPA - Parque Pouso Alegre',
+    category: 'Licenciamento de Instalação',
+    status: 'em_dia',
+    progress: 95,
+    responsibleUserId: 'user-cbp',
+    startDate: '2025-11-01',
+    deadlineDate: '2026-10-30',
+    steps: [
+      { id: 'spa-1', title: 'Aprovação de DTB Diretrizes Água e Esgoto na COPASA MG', completed: true, responsible: 'Cristiane Beatriz Pereira', dueDate: '2025-11-06' },
+      { id: 'spa-2', title: 'Protocolo de Relatório Técnico de Descaracterização de ZPA', completed: true, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-04-06' },
+      { id: 'spa-3', title: 'Emissão da Licença Ambiental do Loteamento', completed: false, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-10-15' }
     ]
   }
 ];
@@ -677,6 +779,28 @@ export const INITIAL_LICENSES: LicensingProcess[] = [
         status: 'em_andamento'
       }
     ]
+  },
+  {
+    id: 'lic-pa-copasa',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-loteamento-pa',
+    processNumber: 'DTB COPASA MG 2017-0982/PA',
+    environmentalOrgan: 'SEMAD',
+    licenseType: 'LI',
+    issueDate: '2017-11-06',
+    expirationDate: '2026-09-30',
+    status: 'deferido',
+    conditions: [
+      {
+        id: 'cond-pa-1',
+        processId: 'lic-pa-copasa',
+        title: 'Execução de Obras Conforme Diretrizes Técnicas Básicas COPASA',
+        description: 'Construção da rede de água potável e interceptor de esgotos sanitários.',
+        deadlineDate: '2026-09-15',
+        alertDays: 30,
+        status: 'em_andamento'
+      }
+    ]
   }
 ];
 
@@ -706,18 +830,31 @@ export const INITIAL_INVOICES: Invoice[] = [
     provider: 'FocusNFe',
     fiscalRef: 'NFS-e nº 0005108 - Cod. Verificação: ACG-EHS-2026',
     xmlMockContent: '<?xml version="1.0" encoding="UTF-8"?><NFSe><Numero>5108</Numero><ValorServicos>42000.00</ValorServicos><Prestador>Cristiane Beatriz Pereira - Consultoria Ambiental</Prestador><Tomador>ACG do Brasil S.A.</Tomador></NFSe>'
+  },
+  {
+    id: 'inv-pa-1',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-loteamento-pa',
+    contractTitle: 'Assessoria de Engenharia Ambiental & Descaracterização ZPA - Loteamento PA',
+    amount: 32000,
+    dueDate: '2026-08-15',
+    issueDate: '2026-07-10',
+    status: 'emitida',
+    provider: 'FocusNFe',
+    fiscalRef: 'NFS-e nº 0005115 - Cod. Verificação: PA-NEO-2026',
+    xmlMockContent: '<?xml version="1.0" encoding="UTF-8"?><NFSe><Numero>5115</Numero><ValorServicos>32000.00</ValorServicos><Prestador>Cristiane Beatriz Pereira - Consultoria Ambiental</Prestador><Tomador>Loteamento Parque Pouso Alegre</Tomador></NFSe>'
   }
 ];
 
 export const INITIAL_AUDIT_LOGS: AuditLog[] = [
   {
-    id: 'log-f1',
+    id: 'log-pa-1',
     tenantId: 'tenant-cbp',
     userName: 'Cristiane Beatriz Pereira',
-    action: 'Credenciais dos Portais SEI MG, IBAMA e MTR da Ferrero validadas',
-    module: 'Portais & Credenciais',
-    timestamp: '2026-07-21 09:30',
+    action: 'Inclusão de projeto Loteamento Parque Pouso Alegre',
+    module: 'Projetos',
+    timestamp: '2026-07-21 09:40',
     isAiAction: false,
-    details: 'Acessos cadastrados para Ferrero do Brasil.'
+    details: 'Descaracterização de ZPA e Diretrizes COPASA catalogados.'
   }
 ];

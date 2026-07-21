@@ -1,7 +1,7 @@
 -- ====================================================================
 -- ECOCONSULT SAAS - ESQUEMA DE BANCO DE DADOS POSTGRESQL (SUPABASE)
 -- Consultoria: Cristiane Beatriz Pereira - Consultoria Ambiental
--- Clientes Enterprise: ACG do Brasil S.A. & Ferrero do Brasil
+-- Clientes Enterprise: ACG do Brasil, Ferrero do Brasil & Loteamento Parque Pouso Alegre
 -- Projeto: https://xjbvtfydakyvayikrxjq.supabase.co
 -- ====================================================================
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS public.portal_credentials (
 ALTER TABLE public.tenants ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.portal_credentials ENABLE ROW LEVEL SECURITY;
 
--- SEED DE CREDENCIAIS DE ACG DO BRASIL E FERRERO DO BRASIL
+-- SEED DE CONSULTORIA E CLIENTES ENTERPRISE
 INSERT INTO public.tenants (id, name, cnpj, logo, fiscal_city, state, plan)
 VALUES ('tenant-cbp', 'Cristiane Beatriz Pereira - Consultoria Ambiental', '34.892.102/0001-44', '🌿', 'Poços de Caldas', 'MG', 'Enterprise')
 ON CONFLICT (id) DO NOTHING;
