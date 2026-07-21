@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import { INITIAL_TENANTS } from '../../services/mockData';
 import { UserRole } from '../../types';
-import { Bell, Sparkles, Building2, UserCheck, ShieldAlert } from 'lucide-react';
+import { SupabaseService } from '../../services/supabaseService';
+import { SUPABASE_PROJECT_URL } from '../../lib/supabase';
+import { Bell, Sparkles, Building2, UserCheck, ShieldAlert, Database, CheckCircle2, AlertCircle } from 'lucide-react';
 
 interface HeaderProps {
   onOpenAiCopilot: () => void;
@@ -11,6 +13,15 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ onOpenAiCopilot }) => {
   const { currentTenant, setCurrentTenant, currentUser, setCurrentUserRole, getCriticalDeadlinesCount } = useApp();
   const deadLines = getCriticalDeadlinesCount();
+
+  const [dbStatus, setDbStatus] = useState<{ connected: boolean; message: string }>({
+    connected: false,
+    message: 'Verificando conexão Supabase...'
+  });
+
+  useEffect(() => {
+    SupabaseService.checkConnection().then(res => setDbStatus(res));
+  }, []);
 
   const roleLabels: Record<UserRole, string> = {
     admin: 'Administrador Sócio',
@@ -22,7 +33,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAiCopilot }) => {
 
   return (
     <header className="h-16 bg-eco-surface border-b border-eco-border px-6 flex items-center justify-between sticky top-0 z-30 shadow-md">
-      {/* Left: Tenant Switcher */}
+      {/* Left: Tenant Switcher & Supabase Status Badge */}
       <div className="flex items-center space-x-4">
         <div className="flex items-center space-x-2 bg-eco-dark/60 border border-eco-border rounded-lg px-3 py-1.5 text-sm">
           <Building2 className="w-4 h-4 text-brand-500" />
@@ -43,9 +54,24 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAiCopilot }) => {
           </select>
         </div>
 
-        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-brand-950 text-brand-500 border border-brand-800">
-          Plano {currentTenant.plan}
-        </span>
+        {/* Supabase Status Indicator */}
+        <div 
+          className={`hidden xl:flex items-center space-x-1.5 px-2.5 py-1 rounded-lg border text-[11px] font-medium font-mono ${
+            dbStatus.connected
+              ? 'bg-emerald-950/60 text-emerald-300 border-emerald-800'
+              : 'bg-eco-dark text-slate-300 border-eco-border'
+          }`}
+          title={dbStatus.message}
+        >
+          <Database className={`w-3.5 h-3.5 ${dbStatus.connected ? 'text-emerald-400' : 'text-brand-400'}`} />
+          <span>Supabase:</span>
+          <span className="text-slate-300 font-semibold">{SUPABASE_PROJECT_URL.replace('https://', '')}</span>
+          {dbStatus.connected ? (
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+          ) : (
+            <span className="text-[9px] bg-slate-800 text-brand-300 px-1 py-0.2 rounded border border-slate-700">Ready</span>
+          )}
+        </div>
       </div>
 
       {/* Right: Actions, Deadlines, Role Selector, User Profile */}
