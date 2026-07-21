@@ -51,6 +51,7 @@ export const INITIAL_CLIENTS: Client[] = [
 ];
 
 export const INITIAL_PORTAL_CREDENTIALS: PortalCredential[] = [
+  // ACG DO BRASIL CREDENTIALS
   {
     id: 'cred-1',
     tenantId: 'tenant-cbp',
@@ -112,10 +113,110 @@ export const INITIAL_PORTAL_CREDENTIALS: PortalCredential[] = [
     cpfNameUser: 'CPF: 05475230684 - Maurício Djalles Costa',
     encryptedPassword: '•••••••• (4qik3j)',
     notes: 'Sistema Nacional de Informações sobre a Gestão dos Resíduos Sólidos'
+  },
+  // FERRERO DO BRASIL CREDENTIALS
+  {
+    id: 'cred-f-1',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-ferrero',
+    systemName: 'FEAM SEI',
+    loginCnpjOrUser: '02.502.943/0001-80',
+    encryptedPassword: '•••••••• (ferrero2024)',
+    notes: 'Acesso Externo SEI MG - Processos Ambientais FEAM / IGAM / IEF / SEMAD'
+  },
+  {
+    id: 'cred-f-2',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-ferrero',
+    systemName: 'IBAMA',
+    loginCnpjOrUser: '02.502.943/0001-80',
+    encryptedPassword: '•••••••• (ferrero_ibama24)',
+    notes: 'Cadastro Técnico Federal - IBAMA Serviços'
+  },
+  {
+    id: 'cred-f-3',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-ferrero',
+    systemName: 'Sistema SINIR',
+    loginCnpjOrUser: '02502943000180',
+    encryptedPassword: '•••••••• (sigor2024)',
+    notes: 'SIGOR / CETESB - Sistema de Gerenciamento Online de Resíduos'
+  },
+  {
+    id: 'cred-f-4',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-ferrero',
+    systemName: 'Polícia Federal',
+    loginCnpjOrUser: '02.502.943/0001-80',
+    emailContact: 'licenciamentoma.semma@gmail.com',
+    encryptedPassword: '•••••••• (semma_pocos24)',
+    notes: 'SEMMA Poços de Caldas - Protocolos de Certidões e Terraplanagem'
+  },
+  {
+    id: 'cred-f-5',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-ferrero',
+    systemName: 'Sistema MTR',
+    loginCnpjOrUser: '02502943000180',
+    encryptedPassword: '•••••••• (mtr_ferrero24)',
+    notes: 'Sistema MTR MG - Manifesto de Transporte de Resíduos FEAM'
   }
 ];
 
 export const INITIAL_DOCUMENTS: DocumentItem[] = [
+  // FERRERO DOCUMENTS
+  {
+    id: 'doc-ferrero-1',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-ferrero',
+    title: 'PGRSI_FERRERO_PERIODO_2026_SEI_143721449.pdf',
+    category: 'Ofícios Emitidos',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: 'PGRSI_FERRERO_PERIODO_2026_SEI_143721449.pdf', uploadedAt: '2026-07-05', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '8.5 MB', note: 'Protocolado no SEI FEAM/URA 1370.01.0049245/2021-51' }
+    ],
+    isAiParsed: true,
+    aiExtractedSummary: 'Extração IA: Ofício nº 143721449/2026 referente ao PGRSI Ferrero. Protocolo confirmado em 05/07/2026 por Cristiane Beatriz Pereira.'
+  },
+  {
+    id: 'doc-ferrero-2',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-ferrero',
+    title: '116ª_ALTERACAO_CONSOLIDACO_CONTRATO_SOCIAL_JUCEMG.pdf',
+    category: 'Documentos da Empresa',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: '116ª_ALTERACAO_CONSOLIDACO_CONTRATO_SOCIAL_JUCEMG.pdf', uploadedAt: '2025-06-06', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '276 KB', note: 'Registrado na JUCEMG - Contrato Social Ferrero do Brasil' }
+    ],
+    isAiParsed: true,
+    aiExtractedSummary: 'Extração IA: 116ª Alteração Contratual da Ferrero do Brasil Indústria Doceira arquivada na JUCEMG.'
+  },
+  {
+    id: 'doc-ferrero-3',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-ferrero',
+    title: '01_Certidoes_e_Declaracoes_Ambientais_Ferrero.pdf',
+    category: 'Licenças & Portarias',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: '01_Certidoes_e_Declaracoes_Ambientais_Ferrero.pdf', uploadedAt: '2025-05-30', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '1.8 MB', note: 'Certidões Negativas de Débitos Ambientais e Quitação de Taxas' }
+    ],
+    isAiParsed: true
+  },
+  {
+    id: 'doc-ferrero-4',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-ferrero',
+    title: '02_Comprovantes_Pagamento_Taxas_FEAM_URA.pdf',
+    category: 'Fiscal',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: '02_Comprovantes_Pagamento_Taxas_FEAM_URA.pdf', uploadedAt: '2025-05-30', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '1.2 MB', note: 'Comprovantes de arrecadação estadual DAE/FEAM' }
+    ],
+    isAiParsed: false
+  },
+
+  // ACG DOCUMENTS
   {
     id: 'doc-acg-1',
     tenantId: 'tenant-cbp',
@@ -534,6 +635,28 @@ export const INITIAL_PROJECTS: Project[] = [
 
 export const INITIAL_LICENSES: LicensingProcess[] = [
   {
+    id: 'lic-ferrero-1',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-ferrero',
+    processNumber: 'FEAM/URA 1370.01.0049245/2021-51',
+    environmentalOrgan: 'FEAM/URA Sul de Minas',
+    licenseType: 'LO',
+    issueDate: '2024-01-10',
+    expirationDate: '2026-08-20',
+    status: 'em_analise',
+    conditions: [
+      {
+        id: 'cond-f-1',
+        processId: 'lic-ferrero-1',
+        title: 'Cumprimento de Condicionante - Efluentes Líquidos (Montante e Jusante)',
+        description: 'Laudos laboratoriais periódicos do corpo receptor conforme Ofício SEI 131673378/2026.',
+        deadlineDate: '2026-08-10',
+        alertDays: 30,
+        status: 'em_andamento'
+      }
+    ]
+  },
+  {
     id: 'lic-acg-pf',
     tenantId: 'tenant-cbp',
     clientId: 'cli-acg',
@@ -541,7 +664,7 @@ export const INITIAL_LICENSES: LicensingProcess[] = [
     environmentalOrgan: 'Polícia Federal',
     licenseType: 'CLF Polícia Federal',
     issueDate: '2025-05-30',
-    expirationDate: '2026-08-25', // Alert < 30 days
+    expirationDate: '2026-08-25',
     status: 'em_analise',
     conditions: [
       {
@@ -559,6 +682,19 @@ export const INITIAL_LICENSES: LicensingProcess[] = [
 
 export const INITIAL_INVOICES: Invoice[] = [
   {
+    id: 'inv-ferrero-1',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-ferrero',
+    contractTitle: 'Contrato de Assessoria Ambiental Continuada & Ofícios SEI - Ferrero',
+    amount: 38500,
+    dueDate: '2026-08-05',
+    issueDate: '2026-07-01',
+    status: 'emitida',
+    provider: 'FocusNFe',
+    fiscalRef: 'NFS-e nº 0005102 - Cod. Verificação: FEAM-MG-2026',
+    xmlMockContent: '<?xml version="1.0" encoding="UTF-8"?><NFSe><Numero>5102</Numero><ValorServicos>38500.00</ValorServicos><Prestador>Cristiane Beatriz Pereira - Consultoria Ambiental</Prestador><Tomador>Ferrero do Brasil Indústria Doceira</Tomador></NFSe>'
+  },
+  {
     id: 'inv-acg-1',
     tenantId: 'tenant-cbp',
     clientId: 'cli-acg',
@@ -575,13 +711,13 @@ export const INITIAL_INVOICES: Invoice[] = [
 
 export const INITIAL_AUDIT_LOGS: AuditLog[] = [
   {
-    id: 'log-acg-1',
+    id: 'log-f1',
     tenantId: 'tenant-cbp',
     userName: 'Cristiane Beatriz Pereira',
-    action: 'Atualização de Acessos aos Portais MTR/SINIR da ACG do Brasil',
+    action: 'Credenciais dos Portais SEI MG, IBAMA e MTR da Ferrero validadas',
     module: 'Portais & Credenciais',
-    timestamp: '2026-07-21 09:15',
+    timestamp: '2026-07-21 09:30',
     isAiAction: false,
-    details: 'Credenciais de Bárbara Oliveira e Raphael Albinati validadas.'
+    details: 'Acessos cadastrados para Ferrero do Brasil.'
   }
 ];

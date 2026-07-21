@@ -1,7 +1,7 @@
 -- ====================================================================
 -- ECOCONSULT SAAS - ESQUEMA DE BANCO DE DADOS POSTGRESQL (SUPABASE)
 -- Consultoria: Cristiane Beatriz Pereira - Consultoria Ambiental
--- Cliente Enterprise: ACG do Brasil S.A. & Ferrero do Brasil
+-- Clientes Enterprise: ACG do Brasil S.A. & Ferrero do Brasil
 -- Projeto: https://xjbvtfydakyvayikrxjq.supabase.co
 -- ====================================================================
 
@@ -37,17 +37,24 @@ CREATE TABLE IF NOT EXISTS public.portal_credentials (
 ALTER TABLE public.tenants ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.portal_credentials ENABLE ROW LEVEL SECURITY;
 
--- SEED DE CREDENCIAIS DA ACG DO BRASIL
+-- SEED DE CREDENCIAIS DE ACG DO BRASIL E FERRERO DO BRASIL
 INSERT INTO public.tenants (id, name, cnpj, logo, fiscal_city, state, plan)
 VALUES ('tenant-cbp', 'Cristiane Beatriz Pereira - Consultoria Ambiental', '34.892.102/0001-44', '🌿', 'Poços de Caldas', 'MG', 'Enterprise')
 ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO public.portal_credentials (id, tenant_id, client_id, system_name, login_cnpj_or_user, cpf_name_user, email_contact, encrypted_password, notes)
 VALUES
+  -- ACG DO BRASIL
   ('cred-1', 'tenant-cbp', 'cli-acg', 'IBAMA', '09.625.967/0002-14', NULL, NULL, 'mgca2014', 'Cadastro Técnico Federal (CTF) - Licença Geral IBAMA'),
   ('cred-2', 'tenant-cbp', 'cli-acg', 'Sistema MTR', '09625967000214', 'CPF: 05475230684 - Maurício Djalles Costa', NULL, 'e22964', 'Manifesto de Transporte de Resíduos - Operador MTR 01'),
   ('cred-3', 'tenant-cbp', 'cli-acg', 'Sistema MTR', '09625967000214', 'CPF: 10228808880 - Miguel Augusto Rocha', 'maugustorocha@hotmail.com', 'acg2020', 'Manifesto de Transporte de Resíduos - Operador MTR 02'),
   ('cred-4', 'tenant-cbp', 'cli-acg', 'Sistema MTR', '09625967000214', 'CPF: 143.588.216.42 - Bárbara Fernanda Pereira Oliveira', 'ehs.brasil@acg-world.com', 'acg2020b', 'Gestão EHS Brasil - Responsável Autorizada MTR'),
   ('cred-5', 'tenant-cbp', 'cli-acg', 'Sistema MTR', '09625967000214', 'CPF: 022.987.346-40 - Raphael Gonçalves Albinati', 'raphael.albinati@acg-world.com', 'acg2022', 'Manifesto de Transporte de Resíduos - Gestor EHS'),
-  ('cred-6', 'tenant-cbp', 'cli-acg', 'Sistema SINIR', '09625967000214', 'CPF: 05475230684 - Maurício Djalles Costa', NULL, '4qik3j', 'Sistema Nacional de Informações sobre a Gestão dos Resíduos Sólidos')
+  ('cred-6', 'tenant-cbp', 'cli-acg', 'Sistema SINIR', '09625967000214', 'CPF: 05475230684 - Maurício Djalles Costa', NULL, '4qik3j', 'Sistema Nacional de Informações sobre a Gestão dos Resíduos Sólidos'),
+  -- FERRERO DO BRASIL
+  ('cred-f-1', 'tenant-cbp', 'cli-ferrero', 'FEAM SEI', '02.502.943/0001-80', NULL, NULL, 'ferrero2024', 'Acesso Externo SEI MG - Processos Ambientais FEAM / IGAM / IEF / SEMAD'),
+  ('cred-f-2', 'tenant-cbp', 'cli-ferrero', 'IBAMA', '02.502.943/0001-80', NULL, NULL, 'ferrero_ibama24', 'Cadastro Técnico Federal - IBAMA Serviços'),
+  ('cred-f-3', 'tenant-cbp', 'cli-ferrero', 'Sistema SINIR', '02502943000180', NULL, NULL, 'sigor2024', 'SIGOR / CETESB - Sistema de Gerenciamento Online de Resíduos'),
+  ('cred-f-4', 'tenant-cbp', 'cli-ferrero', 'Polícia Federal', '02.502.943/0001-80', NULL, 'licenciamentoma.semma@gmail.com', 'semma_pocos24', 'SEMMA Poços de Caldas - Protocolos de Certidões e Terraplanagem'),
+  ('cred-f-5', 'tenant-cbp', 'cli-ferrero', 'Sistema MTR', '02502943000180', NULL, NULL, 'mtr_ferrero24', 'Sistema MTR MG - Manifesto de Transporte de Resíduos FEAM')
 ON CONFLICT (id) DO NOTHING;
