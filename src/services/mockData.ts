@@ -25,6 +25,18 @@ export const INITIAL_USERS: User[] = [
 
 export const INITIAL_CLIENTS: Client[] = [
   {
+    id: 'cli-midea',
+    tenantId: 'tenant-cbp',
+    name: 'Midea Carrier do Brasil S.A.',
+    cnpj: '14.508.829/0001-92',
+    contactPerson: 'EHS & Meio Ambiente Midea',
+    email: 'ehs@mideacarrier.com.br',
+    phone: '(35) 3449-3000',
+    sector: 'Indústria',
+    city: 'Pouso Alegre',
+    state: 'MG'
+  },
+  {
     id: 'cli-acg',
     tenantId: 'tenant-cbp',
     name: 'ACG do Brasil S.A.',
@@ -59,10 +71,42 @@ export const INITIAL_CLIENTS: Client[] = [
     sector: 'Construção Civil',
     city: 'Pouso Alegre',
     state: 'MG'
+  },
+  {
+    id: 'cli-nr2',
+    tenantId: 'tenant-cbp',
+    name: 'Propriedade Rural NR 2 - Sapucaí Mirim',
+    cnpj: '29.102.843/0001-10',
+    contactPerson: 'Gestão de Agronegócio NR 2',
+    email: 'nr2.sapucaimirim@agromail.com.br',
+    phone: '(35) 99872-4100',
+    sector: 'Agronegócio',
+    city: 'Sapucaí-Mirim',
+    state: 'MG'
   }
 ];
 
 export const INITIAL_PORTAL_CREDENTIALS: PortalCredential[] = [
+  // MIDEA CARRIER CREDENTIALS
+  {
+    id: 'cred-midea-1',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-midea',
+    systemName: 'Sistema MTR',
+    loginCnpjOrUser: '14508829000192',
+    encryptedPassword: '•••••••• (mtr_midea2026)',
+    notes: 'Acesso Cadastrado Sistema MTR FEAM - Ficha cadastral Midea Pouso Alegre'
+  },
+  {
+    id: 'cred-midea-2',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-midea',
+    systemName: 'IBAMA',
+    loginCnpjOrUser: '14.508.829/0001-92',
+    encryptedPassword: '•••••••• (midea_ibama26)',
+    notes: 'Cadastro Técnico Federal (CTF Válido até 29/04/2026)'
+  },
+
   // ACG DO BRASIL CREDENTIALS
   {
     id: 'cred-1',
@@ -126,6 +170,7 @@ export const INITIAL_PORTAL_CREDENTIALS: PortalCredential[] = [
     encryptedPassword: '•••••••• (4qik3j)',
     notes: 'Sistema Nacional de Informações sobre a Gestão dos Resíduos Sólidos'
   },
+
   // FERRERO DO BRASIL CREDENTIALS
   {
     id: 'cred-f-1',
@@ -176,6 +221,85 @@ export const INITIAL_PORTAL_CREDENTIALS: PortalCredential[] = [
 ];
 
 export const INITIAL_DOCUMENTS: DocumentItem[] = [
+  // MIDEA CARRIER DOCUMENTS
+  {
+    id: 'doc-midea-1',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-midea',
+    title: 'LICENCA_AMBIENTAL_FEAM_MIDEA_FABRICA_DE_ISOPOR.pdf',
+    category: 'Licenças & Portarias',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: 'LICENCA_AMBIENTAL_FEAM_MIDEA_FABRICA_DE_ISOPOR.pdf', uploadedAt: '2025-08-10', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '5.2 MB', note: 'Licença Ambiental Operacional FEAM para unidade de Isopor' }
+    ],
+    isAiParsed: true,
+    aiExtractedSummary: 'Extração IA: Licença FEAM de Operação para a fábrica de peças de Isopor Midea Carrier Pouso Alegre.'
+  },
+  {
+    id: 'doc-midea-2',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-midea',
+    title: 'Certificado_Regularidade_Ibama_MIDEA_valido_29-04-2026.pdf',
+    category: 'Licenças & Portarias',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: 'Certificado_Regularidade_Ibama_MIDEA_valido_29-04-2026.pdf', uploadedAt: '2026-04-29', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '1.4 MB', note: 'Certificado de Regularidade CTF IBAMA válido até 29/04/2026' }
+    ],
+    isAiParsed: true,
+    aiExtractedSummary: 'Extração IA: Certificado de Regularidade CTF IBAMA nº 2026/MIDEA renovado com sucesso.'
+  },
+  {
+    id: 'doc-midea-3',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-midea',
+    title: 'Estudo_de_Impacto_de_Vizinhanca_EIV_MIDEA_REV_assinado.pdf',
+    category: 'Estudos de Campo',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: 'Estudo_de_Impacto_de_Vizinhanca_EIV_MIDEA_REV_assinado.pdf', uploadedAt: '2025-07-15', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '14.2 MB', note: 'EIV Revisado e assinado para aprovação municipal' }
+    ],
+    isAiParsed: true
+  },
+
+  // NR 2 SAPUCAÍ MIRIM DOCUMENTS
+  {
+    id: 'doc-nr2-1',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-nr2',
+    title: 'CAR_MG_3165404_Propriedade_Rural_NR2.pdf',
+    category: 'Licenças & Portarias',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: 'CAR_MG_3165404_Propriedade_Rural_NR2.pdf', uploadedAt: '2025-03-20', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '2.8 MB', note: 'Recibo de Inscrição CAR MG-3165404 Sapucaí Mirim' }
+    ],
+    isAiParsed: true,
+    aiExtractedSummary: 'Extração IA: Cadastro Ambiental Rural (CAR) da Propriedade NR 2 ativo no SICAR MG.'
+  },
+  {
+    id: 'doc-nr2-2',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-nr2',
+    title: 'SEI_IBAMA_1593169_Ficha_Tecnica_Enquadramento_ADA.pdf',
+    category: 'Relatórios Técnicos',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: 'SEI_IBAMA_1593169_Ficha_Tecnica_Enquadramento_ADA.pdf', uploadedAt: '2025-04-10', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '1.9 MB', note: 'Ato Declaratório Ambiental ADA IBAMA 1593169' }
+    ],
+    isAiParsed: true
+  },
+  {
+    id: 'doc-nr2-3',
+    tenantId: 'tenant-cbp',
+    clientId: 'cli-nr2',
+    title: 'Projeto_Jardins_Filtrantes_Tratamento_Efluente.rar',
+    category: 'Estudos de Campo',
+    currentVersion: 1,
+    versions: [
+      { versionNumber: 1, fileName: 'Projeto_Jardins_Filtrantes_Tratamento_Efluente.rar', uploadedAt: '2025-05-02', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '8.4 MB', note: 'Projeto ecológico de fito-depuração e tratamento efluente' }
+    ],
+    isAiParsed: false
+  },
+
   // LOTEAMENTO PARQUE POUSO ALEGRE DOCUMENTS
   {
     id: 'doc-pa-1',
@@ -203,30 +327,6 @@ export const INITIAL_DOCUMENTS: DocumentItem[] = [
     isAiParsed: true,
     aiExtractedSummary: 'Extração IA: DTB COPASA MG concedendo viabilidade técnica de abastecimento de água e coleta de esgoto para o Loteamento Parque Pouso Alegre.'
   },
-  {
-    id: 'doc-pa-3',
-    tenantId: 'tenant-cbp',
-    clientId: 'cli-loteamento-pa',
-    title: 'Tabela_Orcamento_NEO_Consultoria.xlsx',
-    category: 'Contratos',
-    currentVersion: 1,
-    versions: [
-      { versionNumber: 1, fileName: 'Tabela_Orcamento_NEO_Consultoria.xlsx', uploadedAt: '2017-11-06', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '13 KB', note: 'Planilha de custos e estudos de engenharia ambiental NEO' }
-    ],
-    isAiParsed: false
-  },
-  {
-    id: 'doc-pa-4',
-    tenantId: 'tenant-cbp',
-    clientId: 'cli-loteamento-pa',
-    title: 'Dossie_Engenharia_Loteamento_Parque_Pouso_Alegre.rar',
-    category: 'Relatórios Técnicos',
-    currentVersion: 1,
-    versions: [
-      { versionNumber: 1, fileName: 'Dossie_Engenharia_Loteamento_Parque_Pouso_Alegre.rar', uploadedAt: '2017-11-06', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '12.7 MB', note: 'Projetos urbanísticos, topografia e memoriais descritivos' }
-    ],
-    isAiParsed: false
-  },
 
   // FERRERO DOCUMENTS
   {
@@ -252,32 +352,7 @@ export const INITIAL_DOCUMENTS: DocumentItem[] = [
     versions: [
       { versionNumber: 1, fileName: '116ª_ALTERACAO_CONSOLIDACO_CONTRATO_SOCIAL_JUCEMG.pdf', uploadedAt: '2025-06-06', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '276 KB', note: 'Registrado na JUCEMG - Contrato Social Ferrero do Brasil' }
     ],
-    isAiParsed: true,
-    aiExtractedSummary: 'Extração IA: 116ª Alteração Contratual da Ferrero do Brasil Indústria Doceira arquivada na JUCEMG.'
-  },
-  {
-    id: 'doc-ferrero-3',
-    tenantId: 'tenant-cbp',
-    clientId: 'cli-ferrero',
-    title: '01_Certidoes_e_Declaracoes_Ambientais_Ferrero.pdf',
-    category: 'Licenças & Portarias',
-    currentVersion: 1,
-    versions: [
-      { versionNumber: 1, fileName: '01_Certidoes_e_Declaracoes_Ambientais_Ferrero.pdf', uploadedAt: '2025-05-30', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '1.8 MB', note: 'Certidões Negativas de Débitos Ambientais e Quitação de Taxas' }
-    ],
     isAiParsed: true
-  },
-  {
-    id: 'doc-ferrero-4',
-    tenantId: 'tenant-cbp',
-    clientId: 'cli-ferrero',
-    title: '02_Comprovantes_Pagamento_Taxas_FEAM_URA.pdf',
-    category: 'Fiscal',
-    currentVersion: 1,
-    versions: [
-      { versionNumber: 1, fileName: '02_Comprovantes_Pagamento_Taxas_FEAM_URA.pdf', uploadedAt: '2025-05-30', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '1.2 MB', note: 'Comprovantes de arrecadação estadual DAE/FEAM' }
-    ],
-    isAiParsed: false
   },
 
   // ACG DOCUMENTS
@@ -291,59 +366,7 @@ export const INITIAL_DOCUMENTS: DocumentItem[] = [
     versions: [
       { versionNumber: 1, fileName: '13_Licenca_Funcionamento_Operacao_ACG.pdf', uploadedAt: '2025-05-30', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '4.8 MB', note: 'Licença de Operação e Alvará Municipal de Funcionamento' }
     ],
-    isAiParsed: true,
-    aiExtractedSummary: 'Extração IA: Licença de Funcionamento válida para unidade Farmoquímica ACG do Brasil. Próxima renovação em 30/05/2026.'
-  },
-  {
-    id: 'doc-acg-2',
-    tenantId: 'tenant-cbp',
-    clientId: 'cli-acg',
-    title: '14_Certificado_Policia_Federal_CLF_2025.pdf',
-    category: 'Polícia Federal',
-    currentVersion: 1,
-    versions: [
-      { versionNumber: 1, fileName: '14_Certificado_Policia_Federal_CLF_2025.pdf', uploadedAt: '2025-05-30', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '2.4 MB', note: 'CLF DPF - Produtos Químicos Controlados' }
-    ],
-    isAiParsed: true,
-    aiExtractedSummary: 'Extração IA: Certificado de Licença de Funcionamento DPF nº 2025/PF-MG. Autorização para manuseio de solventes controlados.'
-  },
-  {
-    id: 'doc-acg-3',
-    tenantId: 'tenant-cbp',
-    clientId: 'cli-acg',
-    title: '15_Laudo_Tecnico_SPDA_Para_Raios_2025.pdf',
-    category: 'SPDA',
-    currentVersion: 1,
-    versions: [
-      { versionNumber: 1, fileName: '15_Laudo_Tecnico_SPDA_Para_Raios_2025.pdf', uploadedAt: '2025-05-30', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '6.1 MB', note: 'Laudo de inspeção do Sistema de Proteção contra Descargas Atmosféricas com ART' }
-    ],
-    isAiParsed: true,
-    aiExtractedSummary: 'Extração IA: Laudo SPDA conforme NBR 5419. Malha de aterramento e para-raios aprovados com ART assinado.'
-  },
-  {
-    id: 'doc-acg-4',
-    tenantId: 'tenant-cbp',
-    clientId: 'cli-acg',
-    title: '12_Certificado_HALAL_Exportacao_2025.pdf',
-    category: 'HALAL',
-    currentVersion: 1,
-    versions: [
-      { versionNumber: 1, fileName: '12_Certificado_HALAL_Exportacao_2025.pdf', uploadedAt: '2025-05-30', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '3.2 MB', note: 'Certificação internacional de conformidade HALAL' }
-    ],
-    isAiParsed: true,
-    aiExtractedSummary: 'Extração IA: Certificado HALAL para a linha de produção de cápsulas de gelatina dura ACG do Brasil.'
-  },
-  {
-    id: 'doc-acg-5',
-    tenantId: 'tenant-cbp',
-    clientId: 'cli-acg',
-    title: '11_Documentos_Empresa_CNPJ_Estatuto.pdf',
-    category: 'Documentos da Empresa',
-    currentVersion: 1,
-    versions: [
-      { versionNumber: 1, fileName: '11_Documentos_Empresa_CNPJ_Estatuto.pdf', uploadedAt: '2025-05-30', uploadedBy: 'Cristiane Beatriz Pereira', fileSize: '5.5 MB', note: 'Cartão CNPJ 09.625.967/0002-14 e Contrato Social' }
-    ],
-    isAiParsed: false
+    isAiParsed: true
   }
 ];
 
@@ -639,40 +662,19 @@ export const INITIAL_PROPOSALS: Proposal[] = [
   {
     id: 'prop-101',
     tenantId: 'tenant-cbp',
-    clientId: 'cli-acg',
+    clientId: 'cli-midea',
     templateId: 'pt-1',
-    title: 'Licenciamento & Gestão EHS ACG do Brasil 2026',
+    title: 'Licenciamento FEAM & Renovações IBAMA 2026 - Midea Carrier',
     version: 1,
     filledValues: {
-      cliente: 'ACG do Brasil S.A.',
-      escopo: 'Gestão de licenças de funcionamento, certificado Polícia Federal, laudo SPDA e portais MTR/SINIR/IBAMA.',
-      valor: '120.000,00',
+      cliente: 'Midea Carrier do Brasil S.A.',
+      escopo: 'Acompanhamento do licenciamento ambiental da Fábrica de Isopor, renovação CTF IBAMA 2026 e EIV.',
+      valor: '145.000,00',
       prazo: '60',
       responsavel_tecnico: 'Cristiane Beatriz Pereira'
     },
-    totalValue: 120000,
+    totalValue: 145000,
     deliveryDays: 60,
-    status: 'aprovado',
-    generatedByAI: true,
-    humanApproved: true,
-    createdAt: '2026-07-21'
-  },
-  {
-    id: 'prop-102',
-    tenantId: 'tenant-cbp',
-    clientId: 'cli-loteamento-pa',
-    templateId: 'pt-1',
-    title: 'Descaracterização de ZPA & Diretrizes COPASA MG - Parque Pouso Alegre',
-    version: 1,
-    filledValues: {
-      cliente: 'Loteamento Parque Pouso Alegre',
-      escopo: 'Elaboração do Relatório Técnico de Descaracterização de ZPA e aprovação das Diretrizes Básicas COPASA MG.',
-      valor: '88.000,00',
-      prazo: '90',
-      responsavel_tecnico: 'Cristiane Beatriz Pereira'
-    },
-    totalValue: 88000,
-    deliveryDays: 90,
     status: 'aprovado',
     generatedByAI: true,
     humanApproved: true,
@@ -699,81 +701,58 @@ export const INITIAL_PROJECT_TEMPLATES: ProjectTemplate[] = [
 
 export const INITIAL_PROJECTS: Project[] = [
   {
-    id: 'proj-acg-1',
+    id: 'proj-midea-1',
     tenantId: 'tenant-cbp',
-    clientId: 'cli-acg',
-    templateId: 'pj-tpl-1',
-    name: 'Gestão de Licenças & Polícia Federal - ACG do Brasil',
-    category: 'Polícia Federal / SPDA',
+    clientId: 'cli-midea',
+    name: 'Licenciamento FEAM & Gestão EIV - Midea Carrier Pouso Alegre',
+    category: 'Licenciamento de Instalação',
     status: 'em_dia',
-    progress: 90,
+    progress: 88,
     responsibleUserId: 'user-cbp',
-    startDate: '2026-01-10',
-    deadlineDate: '2026-09-15',
+    startDate: '2026-01-15',
+    deadlineDate: '2026-09-30',
     steps: [
-      { id: 's-1', title: 'Renovação de CLF Polícia Federal 2025/2026', completed: true, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-05-30' },
-      { id: 's-2', title: 'Laudo de Vistoria SPDA NBR 5419', completed: true, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-06-15' },
-      { id: 's-3', title: 'Auditoria Mensal MTR / SINIR Resíduos', completed: false, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-08-30' }
+      { id: 'sm-1', title: 'Renovação do Certificado de Regularidade CTF IBAMA', completed: true, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-04-29' },
+      { id: 'sm-2', title: 'Protocolo de EIV e Impacto de Circulação PMPA', completed: true, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-05-30' },
+      { id: 'sm-3', title: 'Renovação Anual da Licença FEAM Fábrica de Isopor', completed: false, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-09-15' }
     ]
   },
   {
-    id: 'proj-pa-1',
+    id: 'proj-nr2-1',
     tenantId: 'tenant-cbp',
-    clientId: 'cli-loteamento-pa',
-    name: 'Parcelamento do Solo & Descaracterização ZPA - Parque Pouso Alegre',
-    category: 'Licenciamento de Instalação',
+    clientId: 'cli-nr2',
+    name: 'Regularização Ambiental Rural & Outorga ETE - Propriedade NR 2',
+    category: 'Outorga de Uso de Água',
     status: 'em_dia',
-    progress: 95,
+    progress: 92,
     responsibleUserId: 'user-cbp',
-    startDate: '2025-11-01',
-    deadlineDate: '2026-10-30',
+    startDate: '2025-03-10',
+    deadlineDate: '2026-11-30',
     steps: [
-      { id: 'spa-1', title: 'Aprovação de DTB Diretrizes Água e Esgoto na COPASA MG', completed: true, responsible: 'Cristiane Beatriz Pereira', dueDate: '2025-11-06' },
-      { id: 'spa-2', title: 'Protocolo de Relatório Técnico de Descaracterização de ZPA', completed: true, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-04-06' },
-      { id: 'spa-3', title: 'Emissão da Licença Ambiental do Loteamento', completed: false, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-10-15' }
+      { id: 'snr-1', title: 'Inscrição e Retificação CAR MG-3165404 Sapucaí Mirim', completed: true, responsible: 'Cristiane Beatriz Pereira', dueDate: '2025-03-20' },
+      { id: 'snr-2', title: 'Ficha Técnica de Enquadramento ADA IBAMA 1593169', completed: true, responsible: 'Cristiane Beatriz Pereira', dueDate: '2025-04-10' },
+      { id: 'snr-3', title: 'Implantação do Sistema Ecológico de Jardins Filtrantes', completed: false, responsible: 'Cristiane Beatriz Pereira', dueDate: '2026-10-30' }
     ]
   }
 ];
 
 export const INITIAL_LICENSES: LicensingProcess[] = [
   {
-    id: 'lic-ferrero-1',
+    id: 'lic-midea-feam',
     tenantId: 'tenant-cbp',
-    clientId: 'cli-ferrero',
-    processNumber: 'FEAM/URA 1370.01.0049245/2021-51',
+    clientId: 'cli-midea',
+    processNumber: 'FEAM/URA 2090.01.008912/2025',
     environmentalOrgan: 'FEAM/URA Sul de Minas',
     licenseType: 'LO',
-    issueDate: '2024-01-10',
-    expirationDate: '2026-08-20',
+    issueDate: '2025-08-10',
+    expirationDate: '2026-08-28', // Alert < 30 days
     status: 'em_analise',
     conditions: [
       {
-        id: 'cond-f-1',
-        processId: 'lic-ferrero-1',
-        title: 'Cumprimento de Condicionante - Efluentes Líquidos (Montante e Jusante)',
-        description: 'Laudos laboratoriais periódicos do corpo receptor conforme Ofício SEI 131673378/2026.',
-        deadlineDate: '2026-08-10',
-        alertDays: 30,
-        status: 'em_andamento'
-      }
-    ]
-  },
-  {
-    id: 'lic-acg-pf',
-    tenantId: 'tenant-cbp',
-    clientId: 'cli-acg',
-    processNumber: 'CLF DPF 2025-00921/MG',
-    environmentalOrgan: 'Polícia Federal',
-    licenseType: 'CLF Polícia Federal',
-    issueDate: '2025-05-30',
-    expirationDate: '2026-08-25',
-    status: 'em_analise',
-    conditions: [
-      {
-        id: 'cond-acg-1',
-        processId: 'lic-acg-pf',
-        title: 'Envio de Relatório Trimestral de Insumos Controlados DPF',
-        description: 'Balanço mensal de entradas e saídas de solventes químicos controlados.',
+        id: 'cond-midea-1',
+        processId: 'lic-midea-feam',
+        title: 'Manutenção do Certificado de Regularidade CTF IBAMA',
+        description: 'Apresentar certidão atualizada do CTF IBAMA Válido até 29/04/2026.',
         deadlineDate: '2026-08-15',
         alertDays: 30,
         status: 'em_andamento'
@@ -781,22 +760,22 @@ export const INITIAL_LICENSES: LicensingProcess[] = [
     ]
   },
   {
-    id: 'lic-pa-copasa',
+    id: 'lic-nr2-outorga',
     tenantId: 'tenant-cbp',
-    clientId: 'cli-loteamento-pa',
-    processNumber: 'DTB COPASA MG 2017-0982/PA',
-    environmentalOrgan: 'SEMAD',
-    licenseType: 'LI',
-    issueDate: '2017-11-06',
-    expirationDate: '2026-09-30',
+    clientId: 'cli-nr2',
+    processNumber: 'IGAM URGA 2240.01.009812/2025',
+    environmentalOrgan: 'IGAM / URGA',
+    licenseType: 'Outorga',
+    issueDate: '2025-04-15',
+    expirationDate: '2026-10-20',
     status: 'deferido',
     conditions: [
       {
-        id: 'cond-pa-1',
-        processId: 'lic-pa-copasa',
-        title: 'Execução de Obras Conforme Diretrizes Técnicas Básicas COPASA',
-        description: 'Construção da rede de água potável e interceptor de esgotos sanitários.',
-        deadlineDate: '2026-09-15',
+        id: 'cond-nr2-1',
+        processId: 'lic-nr2-outorga',
+        title: 'Medição Semestral de Vazão do Efluente Tratado ETE Sapucaí Mirim',
+        description: 'Envio dos laudos de qualidade e vazão da ETE e Jardins Filtrantes.',
+        deadlineDate: '2026-10-10',
         alertDays: 30,
         status: 'em_andamento'
       }
@@ -806,55 +785,42 @@ export const INITIAL_LICENSES: LicensingProcess[] = [
 
 export const INITIAL_INVOICES: Invoice[] = [
   {
-    id: 'inv-ferrero-1',
+    id: 'inv-midea-1',
     tenantId: 'tenant-cbp',
-    clientId: 'cli-ferrero',
-    contractTitle: 'Contrato de Assessoria Ambiental Continuada & Ofícios SEI - Ferrero',
-    amount: 38500,
-    dueDate: '2026-08-05',
-    issueDate: '2026-07-01',
-    status: 'emitida',
-    provider: 'FocusNFe',
-    fiscalRef: 'NFS-e nº 0005102 - Cod. Verificação: FEAM-MG-2026',
-    xmlMockContent: '<?xml version="1.0" encoding="UTF-8"?><NFSe><Numero>5102</Numero><ValorServicos>38500.00</ValorServicos><Prestador>Cristiane Beatriz Pereira - Consultoria Ambiental</Prestador><Tomador>Ferrero do Brasil Indústria Doceira</Tomador></NFSe>'
-  },
-  {
-    id: 'inv-acg-1',
-    tenantId: 'tenant-cbp',
-    clientId: 'cli-acg',
-    contractTitle: 'Contrato de Consultoria EHS & Licenciamento PF/SPDA - ACG do Brasil',
-    amount: 42000,
+    clientId: 'cli-midea',
+    contractTitle: 'Contrato de Consultoria Licenciamento FEAM & IBAMA - Midea Carrier',
+    amount: 55000,
     dueDate: '2026-08-10',
     issueDate: '2026-07-01',
     status: 'emitida',
     provider: 'FocusNFe',
-    fiscalRef: 'NFS-e nº 0005108 - Cod. Verificação: ACG-EHS-2026',
-    xmlMockContent: '<?xml version="1.0" encoding="UTF-8"?><NFSe><Numero>5108</Numero><ValorServicos>42000.00</ValorServicos><Prestador>Cristiane Beatriz Pereira - Consultoria Ambiental</Prestador><Tomador>ACG do Brasil S.A.</Tomador></NFSe>'
+    fiscalRef: 'NFS-e nº 0005120 - Cod. Verificação: MIDEA-2026',
+    xmlMockContent: '<?xml version="1.0" encoding="UTF-8"?><NFSe><Numero>5120</Numero><ValorServicos>55000.00</ValorServicos><Prestador>Cristiane Beatriz Pereira - Consultoria Ambiental</Prestador><Tomador>Midea Carrier do Brasil S.A.</Tomador></NFSe>'
   },
   {
-    id: 'inv-pa-1',
+    id: 'inv-nr2-1',
     tenantId: 'tenant-cbp',
-    clientId: 'cli-loteamento-pa',
-    contractTitle: 'Assessoria de Engenharia Ambiental & Descaracterização ZPA - Loteamento PA',
-    amount: 32000,
-    dueDate: '2026-08-15',
-    issueDate: '2026-07-10',
+    clientId: 'cli-nr2',
+    contractTitle: 'Assessoria Ambiental Rural CAR/ADA & Jardins Filtrantes - Propriedade NR 2',
+    amount: 24000,
+    dueDate: '2026-08-20',
+    issueDate: '2026-07-05',
     status: 'emitida',
     provider: 'FocusNFe',
-    fiscalRef: 'NFS-e nº 0005115 - Cod. Verificação: PA-NEO-2026',
-    xmlMockContent: '<?xml version="1.0" encoding="UTF-8"?><NFSe><Numero>5115</Numero><ValorServicos>32000.00</ValorServicos><Prestador>Cristiane Beatriz Pereira - Consultoria Ambiental</Prestador><Tomador>Loteamento Parque Pouso Alegre</Tomador></NFSe>'
+    fiscalRef: 'NFS-e nº 0005128 - Cod. Verificação: NR2-AGRO-2026',
+    xmlMockContent: '<?xml version="1.0" encoding="UTF-8"?><NFSe><Numero>5128</Numero><ValorServicos>24000.00</ValorServicos><Prestador>Cristiane Beatriz Pereira - Consultoria Ambiental</Prestador><Tomador>Propriedade Rural NR 2</Tomador></NFSe>'
   }
 ];
 
 export const INITIAL_AUDIT_LOGS: AuditLog[] = [
   {
-    id: 'log-pa-1',
+    id: 'log-midea-1',
     tenantId: 'tenant-cbp',
     userName: 'Cristiane Beatriz Pereira',
-    action: 'Inclusão de projeto Loteamento Parque Pouso Alegre',
-    module: 'Projetos',
-    timestamp: '2026-07-21 09:40',
+    action: 'Inclusão da Midea Carrier e Propriedade Rural NR 2 na consultoria',
+    module: 'CRM',
+    timestamp: '2026-07-21 09:43',
     isAiAction: false,
-    details: 'Descaracterização de ZPA e Diretrizes COPASA catalogados.'
+    details: 'Processos FEAM, CTF IBAMA 2026, CAR MG e Outorga cadastrados.'
   }
 ];

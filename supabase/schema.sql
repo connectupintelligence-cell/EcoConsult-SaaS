@@ -1,7 +1,7 @@
 -- ====================================================================
 -- ECOCONSULT SAAS - ESQUEMA DE BANCO DE DADOS POSTGRESQL (SUPABASE)
 -- Consultoria: Cristiane Beatriz Pereira - Consultoria Ambiental
--- Clientes Enterprise: ACG do Brasil, Ferrero do Brasil & Loteamento Parque Pouso Alegre
+-- Clientes Enterprise: Midea Carrier, ACG do Brasil, Ferrero do Brasil, Loteamento PA & NR 2
 -- Projeto: https://xjbvtfydakyvayikrxjq.supabase.co
 -- ====================================================================
 
@@ -44,6 +44,9 @@ ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO public.portal_credentials (id, tenant_id, client_id, system_name, login_cnpj_or_user, cpf_name_user, email_contact, encrypted_password, notes)
 VALUES
+  -- MIDEA CARRIER
+  ('cred-midea-1', 'tenant-cbp', 'cli-midea', 'Sistema MTR', '14508829000192', NULL, NULL, 'mtr_midea2026', 'Acesso Cadastrado Sistema MTR FEAM - Ficha cadastral Midea Pouso Alegre'),
+  ('cred-midea-2', 'tenant-cbp', 'cli-midea', 'IBAMA', '14.508.829/0001-92', NULL, NULL, 'midea_ibama26', 'Cadastro Técnico Federal (CTF Válido até 29/04/2026)'),
   -- ACG DO BRASIL
   ('cred-1', 'tenant-cbp', 'cli-acg', 'IBAMA', '09.625.967/0002-14', NULL, NULL, 'mgca2014', 'Cadastro Técnico Federal (CTF) - Licença Geral IBAMA'),
   ('cred-2', 'tenant-cbp', 'cli-acg', 'Sistema MTR', '09625967000214', 'CPF: 05475230684 - Maurício Djalles Costa', NULL, 'e22964', 'Manifesto de Transporte de Resíduos - Operador MTR 01'),
